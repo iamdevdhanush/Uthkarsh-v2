@@ -48,7 +48,7 @@ export function Navbar({ onMenuToggle, menuOpen }: NavbarProps) {
         <Link to="/" className="navbar__logo" aria-label="PES Institute of Advanced Management Studies">
           <img
             className="navbar__logo-img"
-            src={eventConfig.media.logo}
+            src="/favicon.svg"
             alt="PES Institute of Advanced Management Studies"
           />
         </Link>

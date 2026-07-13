@@ -34,17 +34,26 @@
 
 .navbar__logo {
   display: flex; align-items: center;
+  line-height: 0;
 }
 
 .navbar__logo-img {
   display: block;
-  max-height: 36px;
+  height: 32px;
   width: auto;
   object-fit: contain;
+  opacity: 0.85;
+  transition: opacity var(--duration-fast) var(--ease-out),
+              transform var(--duration-fast) var(--ease-out);
+}
+
+.navbar__logo-img:hover {
+  opacity: 1;
+  transform: scale(1.04);
 }
 
 @media (min-width: 768px) {
-  .navbar__logo-img { max-height: 42px; }
+  .navbar__logo-img { height: 36px; }
 }
 
 .navbar__desktop {
