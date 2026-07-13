@@ -17,6 +17,7 @@ const navItems = [
   { label: 'People', href: '#faculty' },
   { label: 'Brief', href: '#guidelines' },
   { label: 'Venue', href: '#venue' },
+  { label: 'Contact', href: '/contact' },
 ] as const
 
 export function Navbar({ onMenuToggle, menuOpen }: NavbarProps) {

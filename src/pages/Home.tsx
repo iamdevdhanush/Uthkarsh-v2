@@ -9,6 +9,7 @@ import { Institution } from '../components/sections/Institution'
 import { Faculty } from '../components/sections/Faculty'
 import { Guidelines } from '../components/sections/Guidelines'
 import { Venue } from '../components/sections/Venue'
+import { ContactSection } from '../components/sections/ContactSection'
 import { FinalCTA } from '../components/sections/FinalCTA'
 import { IntroExperience } from '../components/intro/IntroExperience'
 
@@ -52,6 +53,7 @@ export function Home() {
       <Faculty />
       <Guidelines />
       <Venue />
+      <ContactSection />
       <FinalCTA />
     </>
   )

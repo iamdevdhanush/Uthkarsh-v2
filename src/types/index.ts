@@ -79,6 +79,28 @@ export interface Rule {
   items: string[]
 }
 
+export interface ContactPerson {
+  name: string | null
+  role: string | null
+  phone: string | null
+  email: string | null
+  photo?: string | null
+}
+
+export interface OfficialContact {
+  email: string | null
+  phone: string | null
+  website: string | null
+}
+
+export interface ContactConfig {
+  facultyCoordinators: ContactPerson[]
+  studentCoordinators: ContactPerson[]
+  official: OfficialContact
+  whatsapp: string | null
+  registrationSupport: string | null
+}
+
 export type ErrorCode =
   | 'VALIDATION_ERROR'
   | 'DUPLICATE_UTR'

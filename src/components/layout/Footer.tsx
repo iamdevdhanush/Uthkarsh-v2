@@ -37,6 +37,7 @@ export function Footer() {
             <span className="footer__links-label">Navigate</span>
             <Link to="/" className="footer__link">Home</Link>
             <Link to="/register" className="footer__link">Register</Link>
+            <Link to="/contact" className="footer__link">Contact</Link>
             {eventConfig.documents.brochureUrl && (
               <a
                 href={eventConfig.documents.brochureUrl}
