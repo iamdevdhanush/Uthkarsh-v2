@@ -44,7 +44,7 @@
   gap: var(--space-2);
 }
 
-.navbar__logo-text {
+.navbar__logo-name {
   font-family: var(--font-display);
   font-size: var(--text-body-md);
   font-weight: 800;
@@ -53,7 +53,7 @@
 }
 
 @media (min-width: 768px) {
-  .navbar__logo-text {
+  .navbar__logo-name {
     font-size: var(--text-body-lg);
   }
 }

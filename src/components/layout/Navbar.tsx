@@ -15,7 +15,7 @@ const navItems = [
   { label: 'About', href: '#about' },
   { label: 'Schedule', href: '#timeline' },
   { label: 'People', href: '#faculty' },
-  { label: 'FAQ', href: '#faq' },
+  { label: 'Brief', href: '#guidelines' },
   { label: 'Venue', href: '#venue' },
 ]
 
@@ -45,7 +45,7 @@ export function Navbar({ onMenuToggle, menuOpen }: NavbarProps) {
 
       <div className="navbar__inner container">
         <Link to="/" className="navbar__logo" aria-label={`${eventConfig.eventName} homepage`}>
-          <span className="navbar__logo-text">{eventConfig.eventName}</span>
+          <span className="navbar__logo-name">{eventConfig.eventName}</span>
         </Link>
 
         <nav className="navbar__desktop" aria-label="Main navigation">

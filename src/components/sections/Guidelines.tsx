@@ -2,7 +2,6 @@
 import { Accordion } from '../ui/Accordion'
 import { rules as rulesData } from '../../data/rules'
 import { faqItems } from '../../data/faq'
-import { eventConfig } from '../../data/eventConfig'
 import './Guidelines.css'
 
 export function Guidelines() {

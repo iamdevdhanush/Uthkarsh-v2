@@ -15,7 +15,9 @@ export function Register() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h1 className="register-page__title">Register Your Team</h1>
+          <h1 className="register-page__title">
+            Register Your <span className="register-page__title-accent">Team</span>
+          </h1>
           <p className="register-page__desc">
             Complete all steps to register for UTKARSH 26.
           </p>
@@ -33,4 +35,3 @@ export function Register() {
     </div>
   )
 }
-
