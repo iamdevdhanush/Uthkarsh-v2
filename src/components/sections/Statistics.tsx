@@ -4,10 +4,10 @@ import { eventConfig } from '../../data/eventConfig'
 import './Statistics.css'
 
 const stats = [
-  { value: '50', label: 'TEAM CAPACITY', sub: 'LIMITED' },
-  { value: '200', label: 'MAXIMUM MINDS', sub: null },
-  { value: '06:00', label: 'EXECUTION WINDOW', sub: null },
-  { value: '02–04', label: 'UNIT SIZE', sub: 'PER TEAM' },
+  { value: '50', label: 'MAXIMUM TEAMS', sub: 'LIMITED' },
+  { value: '200', label: 'MAXIMUM PARTICIPANTS', sub: null },
+  { value: '6 HOURS', label: 'HACKATHON DURATION', sub: null },
+  { value: '2–4', label: 'TEAM SIZE', sub: 'PER TEAM' },
 ]
 
 export function Statistics() {

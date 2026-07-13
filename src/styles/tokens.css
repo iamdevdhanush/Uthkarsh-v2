@@ -3,7 +3,7 @@
   --deep: #090909;
   --paper: #F7F7F2;
   --pure: #FFFFFF;
-  --graphite: #555550;
+  --graphite: #777770;
   --muted: #8B8B84;
   --grid-grey: #252525;
   --line: #D8D8D2;
@@ -97,8 +97,8 @@
 .light-section {
   --color-bg: var(--color-light-section);
   --color-text: var(--color-light-text);
-  --color-text-secondary: var(--graphite);
-  --color-text-muted: var(--muted);
+  --color-text-secondary: #3A3A38;
+  --color-text-muted: #6B6B66;
   --color-border: var(--line);
   --color-surface: var(--pure);
 }
