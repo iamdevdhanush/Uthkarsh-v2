@@ -1,0 +1,119 @@
+.venue {
+  padding: var(--section-space-lg) 0;
+  background: var(--color-bg);
+}
+
+.venue__layout {
+  display: grid;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .venue__layout {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+  }
+}
+
+.venue__map {
+  aspect-ratio: 4 / 3;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.venue__map-svg {
+  width: 100%;
+  height: 100%;
+  padding: var(--space-6);
+  color: var(--color-text);
+  opacity: 0.6;
+}
+
+.venue__map-building {
+  opacity: 0.3;
+}
+
+.venue__map-window {
+  opacity: 0.2;
+}
+
+.venue__map-door {
+  opacity: 0.5;
+}
+
+.venue__map-pin {
+  opacity: 0.6;
+}
+
+.venue__tag {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: var(--space-2);
+}
+
+.venue__title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-heading-md), 5vw, var(--text-heading-xl));
+  font-weight: 800;
+  margin-bottom: var(--space-3);
+}
+
+.venue__name {
+  font-size: var(--text-body-md);
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
+
+.venue__location {
+  font-size: var(--text-body-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-5);
+}
+
+.venue__details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.venue__detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.venue__detail-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+.venue__detail-value {
+  font-size: var(--text-body-sm);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.venue__note {
+  font-size: var(--text-body-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}

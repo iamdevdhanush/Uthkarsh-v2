@@ -1,0 +1,37 @@
+.step-indicator {
+  margin-bottom: var(--space-8);
+}
+
+.step-indicator__track {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.step-indicator__step {
+  flex: 1;
+  height: 3px;
+  background: var(--color-border);
+  position: relative;
+}
+
+.step-indicator__step--active {
+  background: var(--color-accent);
+}
+
+.step-indicator__step--complete {
+  background: var(--color-text);
+}
+
+.step-indicator__num {
+  display: none;
+}
+
+.step-indicator__label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  letter-spacing: var(--tracking-tight);
+}
