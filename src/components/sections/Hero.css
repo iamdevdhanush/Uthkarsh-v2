@@ -130,8 +130,17 @@
   line-height: var(--leading-snug);
   letter-spacing: var(--tracking-mono);
   color: var(--color-text-secondary);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-2);
   text-transform: uppercase;
+}
+
+.hero__date {
+  font-family: var(--font-display);
+  font-size: clamp(1.125rem, 3vw, 1.5rem);
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: var(--tracking-tight);
+  margin-bottom: var(--space-4);
 }
 
 .hero__meta {

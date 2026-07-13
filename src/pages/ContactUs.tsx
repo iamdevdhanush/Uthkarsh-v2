@@ -32,7 +32,7 @@ export function ContactUs() {
 
             <p className="contact-page__desc">
               Questions about registration, payment, team requirements or the event?
-              Connect directly with the UTKARSH 26 organizing team.
+              Connect directly with the UTKARSH 26 organising team.
             </p>
 
             <div className="contact-page__pulse-line" />
@@ -114,7 +114,7 @@ export function ContactUs() {
                         Email
                       </a>
                     )}
-                    {contactConfig.whatsapp && (
+                    {person.phone && contactConfig.whatsapp && (
                       <a
                         href={`https://wa.me/${contactConfig.whatsapp.replace(/[^0-9]/g, '')}`}
                         target="_blank"
@@ -125,6 +125,9 @@ export function ContactUs() {
                       </a>
                     )}
                   </div>
+                  {!person.phone && person.name && (
+                    <p className="contact-page__pending-text">Contact number pending confirmation</p>
+                  )}
                 </div>
               ))}
             </div>
@@ -220,7 +223,7 @@ export function ContactUs() {
               rel="noopener noreferrer"
               className="contact-page__maps-link"
             >
-              Open in Google Maps &nearr;
+              Open in Google Maps {'\u2197'}
             </a>
           </div>
         </motion.div>
@@ -239,26 +242,38 @@ export function ContactUs() {
             <span className="contact-page__section-line" />
           </div>
 
-          <div className="contact-page__quick">
+            <div className="contact-page__quick">
             <div className="contact-page__quick-item">
-              <span className="contact-page__quick-q">Registration fee?</span>
+              <span className="contact-page__quick-q">When is the event?</span>
+              <span className="contact-page__quick-a">{eventConfig.eventDate}</span>
+            </div>
+            <div className="contact-page__quick-item">
+              <span className="contact-page__quick-q">What time should I report?</span>
+              <span className="contact-page__quick-a">{eventConfig.overallStart}</span>
+            </div>
+            <div className="contact-page__quick-item">
+              <span className="contact-page__quick-q">How many participants are allowed per team?</span>
+              <span className="contact-page__quick-a">{eventConfig.minTeamSize}\u2013{eventConfig.maxTeamSize} participants per team</span>
+            </div>
+            <div className="contact-page__quick-item">
+              <span className="contact-page__quick-q">What is the registration fee?</span>
               <span className="contact-page__quick-a">{eventConfig.registrationFeeFormatted} per team</span>
             </div>
             <div className="contact-page__quick-item">
-              <span className="contact-page__quick-q">Team size?</span>
-              <span className="contact-page__quick-a">{eventConfig.minTeamSize}–{eventConfig.maxTeamSize} participants</span>
+              <span className="contact-page__quick-q">What is the maximum number of teams?</span>
+              <span className="contact-page__quick-a">Up to {eventConfig.maximumTeams} teams</span>
             </div>
             <div className="contact-page__quick-item">
-              <span className="contact-page__quick-q">Team capacity?</span>
-              <span className="contact-page__quick-a">{eventConfig.maximumTeams} teams maximum</span>
-            </div>
-            <div className="contact-page__quick-item">
-              <span className="contact-page__quick-q">Lunch provided?</span>
+              <span className="contact-page__quick-q">Is lunch provided?</span>
               <span className="contact-page__quick-a">Yes</span>
             </div>
             <div className="contact-page__quick-item">
-              <span className="contact-page__quick-q">More details?</span>
-              <Link to="/#guidelines" className="contact-page__quick-link">View FAQ &rarr;</Link>
+              <span className="contact-page__quick-q">Where can I register?</span>
+              <Link to="/register" className="contact-page__quick-link">Registration Portal {'\u2192'}</Link>
+            </div>
+            <div className="contact-page__quick-item">
+              <span className="contact-page__quick-q">Where can I view the brochure?</span>
+              <Link to="/#guidelines" className="contact-page__quick-link">View Brochure {'\u2192'}</Link>
             </div>
           </div>
         </motion.div>
@@ -280,7 +295,7 @@ export function ContactUs() {
           <div className="contact-page__support">
             <p className="contact-page__support-text">
               For questions about payment verification, duplicate registration errors, UTR issues,
-              participant details, or registration status, contact the organizing team.
+              participant details, or registration status, contact the organising team.
             </p>
             <Link to="/register" className="contact-page__support-cta">
               Go to Registration
@@ -289,7 +304,7 @@ export function ContactUs() {
         </motion.div>
 
         <div className="contact-page__bottom">
-          <Link to="/" className="contact-page__bottom-link">&larr; Back to Home</Link>
+          <Link to="/" className="contact-page__bottom-link">{'\u2190'} Back to Home</Link>
           <span className="contact-page__bottom-status">
             <span className="status-dot status-dot--active" />
             CHANNEL ACTIVE

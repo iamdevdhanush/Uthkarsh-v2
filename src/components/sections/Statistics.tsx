@@ -44,7 +44,7 @@ export function Statistics() {
         </div>
         <div className="stats__footer">
           <span className="status-dot status-dot--active" />
-          <span className="stats__footer-text">Real-time capacity — {eventConfig.maximumTeams} teams max</span>
+          <span className="stats__footer-text">{eventConfig.eventDate} — {eventConfig.maximumTeams} teams max</span>
         </div>
       </div>
     </section>

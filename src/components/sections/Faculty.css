@@ -1,8 +1,9 @@
 .faculty {
-  padding: var(--section-space-xl) 0;
+  padding: var(--section-space-md) 0 var(--section-space-xl);
   background: var(--deep);
   position: relative;
   overflow: hidden;
+  scroll-margin-top: var(--nav-height);
 }
 
 .faculty__heading {

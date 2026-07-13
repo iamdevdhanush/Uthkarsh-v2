@@ -120,40 +120,50 @@
 
 .navbar__mobile {
   position: fixed; inset: 0;
-  background: rgba(5, 5, 5, 0.98);
-  backdrop-filter: blur(20px);
+  width: 100%;
+  min-height: 100dvh;
+  background: var(--void);
   display: flex; align-items: center; justify-content: center;
   z-index: var(--z-overlay);
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .navbar__mobile-nav {
   display: flex; flex-direction: column;
-  align-items: center; gap: var(--space-8);
+  align-items: center; gap: var(--space-6);
+  padding: calc(var(--nav-height) + var(--space-8)) var(--space-5) var(--space-8);
+  width: 100%;
 }
 
 .navbar__mobile-link {
   font-family: var(--font-display);
-  font-size: clamp(var(--text-heading-lg), 7vw, var(--text-section));
+  font-size: clamp(1.5rem, 5vw, 2rem);
   font-weight: 700; color: var(--color-text);
   transition: color var(--duration-fast) var(--ease-out);
+  text-align: center;
+  padding: var(--space-1) 0;
 }
 
 .navbar__mobile-link:hover { color: var(--color-accent); }
 
 .navbar__mobile-cta {
-  margin-top: var(--space-6);
+  margin-top: var(--space-4);
   display: flex; flex-direction: column;
   align-items: center; gap: var(--space-3);
+  width: 100%;
+  max-width: 20rem;
 }
 
 .navbar__mobile-outline {
-  display: inline-flex; align-items: center;
+  display: inline-flex; align-items: center; justify-content: center;
   height: 2.75rem; padding: 0 var(--space-6);
   font-family: var(--font-display);
   font-size: var(--text-body-sm); font-weight: 600;
   color: var(--color-text);
   border: 1px solid rgba(255,255,255,0.15);
   transition: all var(--duration-fast) var(--ease-out);
+  width: 100%;
 }
 
 .navbar__mobile-outline:hover {
@@ -161,12 +171,13 @@
 }
 
 .navbar__mobile-register {
-  display: inline-flex; align-items: center;
+  display: inline-flex; align-items: center; justify-content: center;
   height: 3rem; padding: 0 var(--space-8);
   background: var(--color-accent); color: var(--pure);
   font-family: var(--font-display);
   font-size: var(--text-body-md); font-weight: 600;
   transition: background var(--duration-fast) var(--ease-out);
+  width: 100%;
 }
 
 .navbar__mobile-register:hover { background: var(--color-energy); }

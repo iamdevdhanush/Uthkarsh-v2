@@ -16,7 +16,7 @@ export const faqItems: FAQItem[] = [
   },
   {
     question: 'How is payment verified?',
-    answer: 'Payment is verified manually by the organising team using the UTR / transaction reference against the receiving account. Your registration status will be updated after successful verification.',
+    answer: 'Payment is verified manually by the organising team using the UTR or transaction reference against the receiving account. Your registration status will be updated after successful verification.',
   },
   {
     question: 'When is registration confirmed?',
@@ -24,7 +24,7 @@ export const faqItems: FAQItem[] = [
   },
   {
     question: 'Will lunch be provided?',
-    answer: `Yes, lunch will be provided by the college to all registered participants.`,
+    answer: 'Yes, lunch will be provided by the college to all registered participants.',
   },
   {
     question: 'Should participants bring laptops?',
@@ -32,7 +32,7 @@ export const faqItems: FAQItem[] = [
   },
   {
     question: 'Can AI tools be used?',
-    answer: 'Policy on AI tool usage during the hackathon will be communicated in the official guidelines and announced on the event day.',
+    answer: 'The policy on AI tool usage during the hackathon will be communicated in the official guidelines and announced on the event day.',
   },
   {
     question: 'When are problem statements revealed?',
@@ -41,5 +41,13 @@ export const faqItems: FAQItem[] = [
   {
     question: 'How can participants reach the venue?',
     answer: `The event is hosted at ${eventConfig.institutionFull}, Shivamogga, Karnataka. Detailed directions will be shared with registered participants.`,
+  },
+  {
+    question: 'What is the event date?',
+    answer: `The event date is ${eventConfig.eventDate}. Please check back for the confirmed date or contact the organising team.`,
+  },
+  {
+    question: 'What time does the event start and end?',
+    answer: `Reporting begins at ${eventConfig.overallStart}. The hackathon runs from ${eventConfig.hackathonStart} to ${eventConfig.hackathonEnd}. The event concludes at ${eventConfig.eventConcludes}.`,
   },
 ]

@@ -1,7 +1,8 @@
 .institution {
-  padding: var(--section-space-xl) 0;
+  padding: var(--section-space-lg) 0 var(--section-space-md);
   background: var(--deep);
   position: relative;
+  scroll-margin-top: var(--nav-height);
 }
 
 .institution__layout {

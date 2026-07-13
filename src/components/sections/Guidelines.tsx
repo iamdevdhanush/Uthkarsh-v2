@@ -1,4 +1,5 @@
-﻿import { motion } from 'motion/react'
+﻿import { useState } from 'react'
+import { motion } from 'motion/react'
 import { Accordion } from '../ui/Accordion'
 import { rules as rulesData } from '../../data/rules'
 import { faqItems } from '../../data/faq'
@@ -8,6 +9,7 @@ import './Guidelines.css'
 
 export function Guidelines() {
   const reducedMotion = useReducedMotion()
+  const [brochureError, setBrochureError] = useState(false)
 
   const accordionItems = rulesData.map((rule) => ({
     id: rule.category.toLowerCase().replace(/\s+/g, '-'),
@@ -31,31 +33,36 @@ export function Guidelines() {
     {
       id: 'brochure',
       title: '01 // OFFICIAL BROCHURE',
-      content: eventConfig.documents.brochureUrl ? (
+      content: !brochureError ? (
         <div className="event-brief__brochure">
-          <div className="event-brief__brochure-icon">
-            <span className="event-brief__brochure-doc" />
+          <div className="event-brief__brochure-image-wrap">
+            <img
+              className="event-brief__brochure-image"
+              src={eventConfig.documents.brochureImage}
+              alt="Official UTKARSH 26 inter-college hackathon brochure"
+              onError={() => setBrochureError(true)}
+              loading="lazy"
+            />
           </div>
-          <div className="event-brief__brochure-info">
-            <p className="event-brief__brochure-name">
-              {eventConfig.eventName} — Event Brochure
-            </p>
-            <p className="event-brief__brochure-desc">
-              Complete event information, participation details and guidelines.
-            </p>
+          <p className="event-brief__brochure-desc">
+            Everything you need to know about UTKARSH 26 \u2014 event schedule, eligibility, team requirements, rules, venue and registration information.
+          </p>
+          <div className="event-brief__brochure-actions">
+            <a
+              href={eventConfig.documents.brochureImage}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="event-brief__brochure-cta"
+            >
+              <span>View Official Brochure</span>
+              <span className="event-brief__brochure-arrow">{'\u2197'}</span>
+            </a>
           </div>
-          <a
-            href={eventConfig.documents.brochureUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="event-brief__brochure-cta"
-          >
-            <span>View Brochure</span>
-            <span className="event-brief__brochure-arrow">&rarr;</span>
-          </a>
         </div>
       ) : (
-        <p className="event-brief__placeholder">Brochure will be available soon.</p>
+        <div className="event-brief__brochure event-brief__brochure--pending">
+          <p className="event-brief__placeholder">The official brochure will be available soon. Please add <code>/media/broucher.jpg</code> to the public assets.</p>
+        </div>
       ),
     },
     {

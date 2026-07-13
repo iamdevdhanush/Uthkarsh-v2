@@ -3,6 +3,7 @@
   padding: var(--section-space-xl) 0;
   background: var(--deep);
   overflow: hidden;
+  scroll-margin-top: var(--nav-height);
 }
 
 .about__bg {

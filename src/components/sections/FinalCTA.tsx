@@ -9,13 +9,13 @@ export function FinalCTA() {
       <div className="container">
         <div className="final-cta__system-bar">
           <div className="final-cta__sys-item">
-            <span className="final-cta__sys-label">SYSTEM TIME</span>
-            <span className="final-cta__sys-value">16:00</span>
+            <span className="final-cta__sys-label">DATE</span>
+            <span className="final-cta__sys-value">{eventConfig.eventDate}</span>
           </div>
           <div className="final-cta__sys-divider" />
           <div className="final-cta__sys-item">
             <span className="final-cta__sys-label">STATUS</span>
-            <span className="final-cta__sys-value final-cta__sys-value--deadline">DEADLINE ACTIVE</span>
+            <span className="final-cta__sys-value final-cta__sys-value--deadline">REGISTRATIONS OPEN</span>
           </div>
         </div>
 

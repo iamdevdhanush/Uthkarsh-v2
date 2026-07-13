@@ -1,5 +1,6 @@
 export const eventConfig = {
   eventName: 'UTKARSH 26',
+  eventDate: 'DATE TO BE CONFIRMED',
   institution: 'PES Institute of Advanced Management Studies',
   institutionShort: 'PESIAMS',
   institutionFull: 'PES Institute of Advanced Management Studies',
@@ -10,6 +11,7 @@ export const eventConfig = {
   maximumTeams: 50,
   minTeamSize: 2,
   maxTeamSize: 4,
+  maxParticipants: 200,
 
   registrationFee: 1000,
   registrationFeeFormatted: '₹1,000',
@@ -21,6 +23,7 @@ export const eventConfig = {
   hackathonDuration: '6 hours',
 
   lunchProvided: true,
+  registrationDeadline: null as string | null,
 
   submissionDeadline: '4:00 PM',
   resultsTime: '4:45 PM',
@@ -39,6 +42,7 @@ export const eventConfig = {
 
   documents: {
     brochureUrl: null as string | null,
+    brochureImage: '/media/broucher.jpg',
   },
 
   venue: {

@@ -67,7 +67,16 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
             >
-              SIX HOURS. ONE UNKNOWN PROBLEM.
+              SIX-HOUR INTER-COLLEGE HACKATHON
+            </motion.p>
+
+            <motion.p
+              className="hero__date"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.42, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {eventConfig.eventDate}
             </motion.p>
 
             <motion.div
@@ -104,7 +113,7 @@ export function Hero() {
               </Link>
               <a href="#about" className="hero__cta hero__cta--secondary">
                 <span className="hero__cta-text">Explore System</span>
-                <span className="hero__cta-arrow">&darr;</span>
+                <span className="hero__cta-arrow">&#8595;</span>
               </a>
             </motion.div>
           </div>

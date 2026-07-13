@@ -1,21 +1,24 @@
-﻿import { motion } from 'motion/react'
+﻿import { useState } from 'react'
+import { motion } from 'motion/react'
 import { eventConfig } from '../../data/eventConfig'
 import './Venue.css'
 
 const mapsUrl = `https://www.google.com/maps/search/${eventConfig.venue.mapsQuery}`
-const embedUrl = `https://www.google.com/maps/embed/v1/place?key=&q=${eventConfig.venue.mapsQuery}`
 
 const venueDetails = [
+  { label: 'DATE', value: eventConfig.eventDate },
   { label: 'REPORTING', value: eventConfig.overallStart },
-  { label: 'EVENT WINDOW', value: `${eventConfig.overallStart} – ${eventConfig.overallEnd}` },
-  { label: 'HACKATHON', value: `${eventConfig.hackathonStart} – ${eventConfig.hackathonEnd}` },
+  { label: 'EVENT WINDOW', value: `${eventConfig.overallStart} \u2013 ${eventConfig.overallEnd}` },
+  { label: 'HACKATHON', value: `${eventConfig.hackathonStart} \u2013 ${eventConfig.hackathonEnd}` },
 ]
 
 export function Venue() {
+  const [imageError, setImageError] = useState(false)
+
   return (
     <section className="venue" id="venue">
       <div className="container">
-        <div className="section-eyebrow">ACT 10 — LOCATION TERMINAL</div>
+        <div className="section-eyebrow">ACT 10 \u2014 LOCATION TERMINAL</div>
         <div className="venue__layout">
           <motion.div
             className="venue__info"
@@ -41,8 +44,8 @@ export function Venue() {
               rel="noopener noreferrer"
               className="venue__maps-cta"
             >
-              <span>Open in Maps</span>
-              <span className="venue__maps-arrow">&nearr;</span>
+              <span>Open in Google Maps</span>
+              <span className="venue__maps-arrow">{'\u2197'}</span>
             </a>
           </motion.div>
 
@@ -56,33 +59,26 @@ export function Venue() {
             <div className="venue__map-frame">
               <div className="venue__map-top">
                 <span className="status-dot status-dot--active" />
-                <span className="venue__map-coord">N13°43' E75°37'</span>
+                <span className="venue__map-coord">N13\u00b043' E75\u00b037'</span>
                 <span className="venue__map-sep">|</span>
-                <span className="venue__map-label">SATELLITE // ACTIVE</span>
+                <span className="venue__map-label">CAMPUS // PESIAMS</span>
               </div>
               <div className="venue__map">
-                <iframe
-                  title="PESIAMS Location"
-                  src={embedUrl}
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0, minHeight: '280px' }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  onError={(e) => {
-                    const target = e.currentTarget
-                    target.style.display = 'none'
-                    const fallback = target.nextElementSibling
-                    if (fallback) (fallback as HTMLElement).style.display = 'flex'
-                  }}
-                />
-                <div className="venue__map-fallback">
-                  <p className="venue__map-fallback-text">Map unavailable</p>
-                  <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="venue__map-fallback-cta">
-                    Open in Google Maps
-                  </a>
-                </div>
+                {!imageError ? (
+                  <img
+                    className="venue__map-image"
+                    src={eventConfig.media.campusImage}
+                    alt={`${eventConfig.institutionFull} campus`}
+                    onError={() => setImageError(true)}
+                  />
+                ) : (
+                  <div className="venue__map-fallback">
+                    <p className="venue__map-fallback-text">{eventConfig.institutionShort} \u2014 Shivamogga</p>
+                    <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="venue__map-fallback-cta">
+                      Open in Google Maps {'\u2197'}
+                    </a>
+                  </div>
+                )}
               </div>
               <div className="venue__map-bottom">
                 <span className="venue__map-coord">{eventConfig.institutionShort}</span>

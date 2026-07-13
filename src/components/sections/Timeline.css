@@ -2,6 +2,7 @@
   padding: var(--section-space-xl) 0;
   background: var(--void);
   position: relative;
+  scroll-margin-top: var(--nav-height);
 }
 
 .timeline__layout {

@@ -1,6 +1,7 @@
 ﻿import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'motion/react'
 import { timelineEvents } from '../../data/timeline'
+import { eventConfig } from '../../data/eventConfig'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import './Timeline.css'
 
@@ -62,7 +63,7 @@ export function Timeline() {
               transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             >
               <div className="timeline__monitor-header">
-                <span className="timeline__monitor-tag">CURRENT SEQUENCE</span>
+                <span className="timeline__monitor-tag">{eventConfig.eventDate}</span>
                 <span className="status-dot status-dot--active" />
               </div>
               <div className="timeline__monitor-main">

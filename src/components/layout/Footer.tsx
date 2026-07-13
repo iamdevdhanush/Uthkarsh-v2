@@ -59,6 +59,8 @@ export function Footer() {
           </p>
           <div className="footer__badge">
             <span className="footer__badge-dot" />
+            <span className="footer__badge-text">{eventConfig.eventDate}</span>
+            <span className="footer__badge-sep" />
             <span className="footer__badge-text">6-Hour Hackathon</span>
             <span className="footer__badge-sep" />
             <span className="footer__badge-text">On-site Problem</span>

@@ -20,7 +20,7 @@ function ContactAction({ href, label, type }: { href: string | null; label: stri
       aria-label={`${label} via ${type}`}
     >
       <span className="contact__action-label">{label}</span>
-      <span className="contact__action-arrow">&rarr;</span>
+      <span className="contact__action-arrow">{'\u2192'}</span>
     </a>
   )
 }
@@ -36,18 +36,21 @@ function CoordinatorCard({ person, index, prefix }: {
     <div className="contact__card">
       <div className="contact__card-header">
         <span className="contact__card-index">{prefix}{String(index + 1).padStart(2, '0')}</span>
-        <span className="contact__card-status">
-          <span className="status-dot status-dot--active" />
-          <span className="contact__card-status-text">ONLINE</span>
-        </span>
+        {person.phone && (
+          <span className="contact__card-status">
+            <span className="status-dot status-dot--active" />
+            <span className="contact__card-status-text">ONLINE</span>
+          </span>
+        )}
       </div>
       <div className="contact__card-body">
         {person.name && <p className="contact__card-name">{person.name}</p>}
         {person.role && <p className="contact__card-role">{person.role}</p>}
+        {!person.phone && person.name && <p className="contact__card-role contact__card-role--pending">Contact number pending confirmation</p>}
       </div>
       <div className="contact__card-actions">
         <ContactAction href={person.phone ? `tel:${person.phone}` : null} label="Call" type="phone" />
-        <ContactAction href={person.email ? `mailto:${person.email}` : null} label="Email" type="email" />
+        {person.phone && <ContactAction href={`https://wa.me/${person.phone.replace(/[^0-9]/g, '')}`} label="WhatsApp" type="whatsapp" />}
       </div>
     </div>
   )
@@ -56,6 +59,9 @@ function CoordinatorCard({ person, index, prefix }: {
 export function ContactSection() {
   const coordinatorsExist = hasAnyCoordinator()
   const showContactLink = !coordinatorsExist && !hasContactData()
+
+  const studentWithData = contactConfig.studentCoordinators.some(c => c.name || c.phone || c.email)
+  const facultyWithData = contactConfig.facultyCoordinators.some(c => c.name || c.phone || c.email)
 
   return (
     <section className="contact" id="contact">
@@ -75,13 +81,13 @@ export function ContactSection() {
           <p className="contact__intro-text">
             Questions about registration, payment, team requirements or the event?
             <br />
-            Reach the UTKARSH 26 organizing team directly.
+            Reach the UTKARSH 26 organising team directly.
           </p>
         </div>
 
-        {coordinatorsExist && (
+        {(facultyWithData || studentWithData) && (
           <div className="contact__directory">
-            {contactConfig.facultyCoordinators.length > 0 && (
+            {facultyWithData && (
               <div className="contact__group">
                 <h3 className="contact__group-title">FACULTY COORDINATORS</h3>
                 <div className="contact__grid contact__grid--faculty">
@@ -92,7 +98,7 @@ export function ContactSection() {
               </div>
             )}
 
-            {contactConfig.studentCoordinators.length > 0 && (
+            {studentWithData && (
               <div className="contact__group">
                 <h3 className="contact__group-title">STUDENT COORDINATORS</h3>
                 <div className="contact__grid contact__grid--student">
@@ -105,7 +111,7 @@ export function ContactSection() {
           </div>
         )}
 
-        {!coordinatorsExist && (
+        {!facultyWithData && !studentWithData && (
           <div className="contact__pending">
             <div className="contact__pending-grid">
               <div className="contact__pending-line" />
@@ -113,7 +119,7 @@ export function ContactSection() {
               <div className="contact__pending-line contact__pending-line--medium" />
             </div>
             <p className="contact__pending-text">
-              Coordinator contact details will be available here once confirmed by the organizing team.
+              Coordinator contact details will be available here once confirmed by the organising team.
             </p>
           </div>
         )}
@@ -122,7 +128,7 @@ export function ContactSection() {
           <div className="contact__resource">
             <span className="contact__resource-label">COMMON QUESTIONS</span>
             <Link to="/#guidelines" className="contact__resource-link">
-              FAQ &rarr;
+              FAQ {'\u2192'}
             </Link>
           </div>
           {contactConfig.registrationSupport && (
@@ -134,7 +140,7 @@ export function ContactSection() {
           <div className="contact__resource">
             <span className="contact__resource-label">REGISTRATION HELP</span>
             <Link to="/register" className="contact__resource-link">
-              Registration Portal &rarr;
+              Registration Portal {'\u2192'}
             </Link>
           </div>
         </div>
@@ -165,7 +171,7 @@ export function ContactSection() {
         {showContactLink && (
           <div className="contact__details-link">
             <Link to="/contact" className="contact__details-cta">
-              View all contact information &rarr;
+              View all contact information {'\u2192'}
             </Link>
           </div>
         )}

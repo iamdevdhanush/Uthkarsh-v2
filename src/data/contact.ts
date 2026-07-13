@@ -5,14 +5,16 @@ export const contactConfig: ContactConfig = {
     { name: null, role: null, phone: null, email: null, photo: null },
   ],
   studentCoordinators: [
-    { name: null, role: null, phone: null, email: null, photo: null },
+    { name: 'Dhanush D Prabhu', role: 'Student Coordinator', phone: '7624828817', email: null, photo: null },
+    { name: 'ABC', role: 'Student Coordinator', phone: null, email: null, photo: null },
+    { name: 'DEF', role: 'Student Coordinator', phone: null, email: null, photo: null },
   ],
   official: {
     email: null,
     phone: null,
     website: null,
   },
-  whatsapp: null,
+  whatsapp: '7624828817',
   registrationSupport: null,
 }
 
