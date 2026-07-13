@@ -4,22 +4,15 @@ import { eventConfig } from '../../data/eventConfig'
 import './Institution.css'
 
 export function Institution() {
+  const [videoLoaded, setVideoLoaded] = useState(false)
+  const [videoError, setVideoError] = useState(false)
+  const [imageError, setImageError] = useState(false)
   const [logoError, setLogoError] = useState(false)
-  const [campusError, setCampusError] = useState(false)
 
   return (
     <section className="institution" id="institution">
       <div className="container">
-        <motion.div
-          className="institution__header"
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <span className="section-eyebrow">ACT 07 — THE INSTITUTION</span>
-        </motion.div>
-
+        <div className="section-eyebrow">ACT 07 — HOST LOCATION</div>
         <div className="institution__layout">
           <motion.div
             className="institution__media"
@@ -28,22 +21,46 @@ export function Institution() {
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
-            {!campusError ? (
-              <div className="institution__frame">
+            <div className="institution__frame">
+              <div className="institution__frame-top">
+                <span className="status-dot status-dot--active" />
+                <span className="institution__frame-signal">SIGNAL // STABLE</span>
+                <span className="institution__frame-sep">|</span>
+                <span>LOCATION // PESIAMS</span>
+              </div>
+
+              {!videoError ? (
+                <video
+                  className={`institution__video${videoLoaded ? ' institution__video--ready' : ''}`}
+                  src={eventConfig.media.campusVideo}
+                  muted autoPlay playsInline loop preload="auto"
+                  poster={eventConfig.media.campusImage}
+                  onLoadedData={() => setVideoLoaded(true)}
+                  onError={() => setVideoError(true)}
+                />
+              ) : null}
+
+              {!imageError && (videoError || !videoLoaded) ? (
                 <img
+                  className="institution__image"
                   src={eventConfig.media.campusImage}
                   alt={`${eventConfig.institutionFull} campus`}
-                  className="institution__campus-img"
-                  onError={() => setCampusError(true)}
+                  onError={() => setImageError(true)}
                 />
-                <div className="institution__frame-label">PESIAMS · Main Campus</div>
+              ) : null}
+
+              {videoError && imageError ? (
+                <div className="institution__placeholder">
+                  <span>{eventConfig.institutionShort}</span>
+                  <span>Main Campus</span>
+                </div>
+              ) : null}
+
+              <div className="institution__frame-bottom">
+                <span>{eventConfig.institutionShort} · Main Campus</span>
+                <span className="institution__frame-coord">N13°43' E75°37'</span>
               </div>
-            ) : (
-              <div className="institution__frame-placeholder">
-                <span className="institution__frame-placeholder-text">{eventConfig.institutionShort}</span>
-                <span className="institution__frame-placeholder-sub">Main Campus</span>
-              </div>
-            )}
+            </div>
           </motion.div>
 
           <motion.div
@@ -70,21 +87,25 @@ export function Institution() {
                 />
               </div>
             ) : (
-              <div className="institution__logo-box">
-                <span className="institution__logo-text">{eventConfig.institutionShort}</span>
-                <span className="institution__logo-sub">Since 2008</span>
+              <div className="institution__logo-fallback">
+                <span>{eventConfig.institutionShort}</span>
               </div>
             )}
 
             <div className="institution__dept">
-              <h3 className="institution__dept-heading">Organised by</h3>
-              <p className="institution__dept-name">{eventConfig.department}</p>
+              <span className="institution__dept-label">Organised by</span>
+              <span className="institution__dept-name">{eventConfig.department}</span>
             </div>
 
             <p className="institution__blurb">
               PES Institute of Advanced Management Studies has been committed to academic
               excellence in management and computer applications education since 2008.
             </p>
+
+            <div className="institution__host-badge">
+              <span className="institution__host-dot" />
+              <span className="institution__host-text">HOST // {eventConfig.institutionShort}</span>
+            </div>
           </motion.div>
         </div>
       </div>

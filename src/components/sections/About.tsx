@@ -1,4 +1,5 @@
 ﻿import { motion } from 'motion/react'
+import { useReducedMotion } from '../../hooks/useReducedMotion'
 import './About.css'
 
 const lines = [
@@ -10,20 +11,25 @@ const lines = [
 ]
 
 export function About() {
+  const reducedMotion = useReducedMotion()
+
   return (
     <section className="about" id="about">
+      <div className="about__bg" />
       <div className="container">
+        <div className="section-eyebrow">ACT 02 — MISSION BRIEF</div>
         <div className="about__layout">
           <div className="about__statement">
             {lines.map((line) => (
               <motion.p
                 key={line.text}
                 className={`about__line${line.accent ? ' about__line--accent' : ''}`}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={reducedMotion ? { opacity: 1 } : { opacity: 0.15 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.6, delay: line.delay, ease: [0.22, 1, 0.36, 1] }}
               >
+                {line.accent && <span className="about__line-accent-dot" />}
                 {line.text}
               </motion.p>
             ))}
@@ -51,6 +57,7 @@ export function About() {
             </motion.p>
           </div>
         </div>
+        <div className="about__signal" />
       </div>
     </section>
   )

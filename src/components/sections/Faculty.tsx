@@ -22,6 +22,10 @@ function FacultyCard({ member, index }: { member: typeof facultyMembers[number];
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
     >
+      <div className="faculty__index">
+        <span className="faculty__index-num">{String(index + 1).padStart(2, '0')}</span>
+        <span className="faculty__index-line" />
+      </div>
       <div className="faculty__image-wrap">
         <img
           src={member.image}
@@ -44,6 +48,7 @@ function FacultyCard({ member, index }: { member: typeof facultyMembers[number];
         </div>
       </div>
       <div className="faculty__info">
+        <div className="faculty__status-line" />
         {member.name ? (
           <h3 className="faculty__name">{member.name}</h3>
         ) : (
@@ -67,31 +72,19 @@ export function Faculty() {
   return (
     <section className="faculty" id="faculty">
       <div className="container">
-        <div className="faculty__header">
-          <motion.span
-            className="section-eyebrow"
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.5 }}
-          >
-            ACT 08 — THE PEOPLE
-          </motion.span>
-          <motion.h2
-            className="faculty__heading"
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          >
-            Faculty &amp; Leadership
-          </motion.h2>
-        </div>
+        <div className="section-eyebrow">ACT 08 — PERSONNEL DIRECTORY</div>
+        <h2 className="faculty__heading">People Behind the Protocol</h2>
 
         <div className="faculty__leadership">
           {leaders.map((member, i) => (
             <FacultyCard key={member.id} member={member} index={i} />
           ))}
+        </div>
+
+        <div className="faculty__divider">
+          <span className="faculty__divider-line" />
+          <span className="faculty__divider-label">FACULTY</span>
+          <span className="faculty__divider-line" />
         </div>
 
         <div className="faculty__grid">

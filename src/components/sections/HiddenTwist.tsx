@@ -1,20 +1,32 @@
-﻿import { motion } from 'motion/react'
+﻿import { useRef } from 'react'
+import { motion, useInView } from 'motion/react'
+import { useReducedMotion } from '../../hooks/useReducedMotion'
 import './HiddenTwist.css'
 
 export function HiddenTwist() {
+  const reducedMotion = useReducedMotion()
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
+
   return (
-    <section className="twist" id="twist">
+    <section
+      ref={sectionRef}
+      className={`twist${isInView && !reducedMotion ? ' twist--disrupted' : ''}`}
+      id="twist"
+    >
+      <div className="twist__bg" />
       <div className="container">
         <div className="twist__layout">
-          <motion.span
-            className="section-eyebrow"
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
+          <motion.div
+            className="twist__time-marker"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{ duration: 0.5 }}
           >
-            ACT 05 — THE DISRUPTION
-          </motion.span>
+            <span className="twist__time-num">14:30</span>
+            <span className="twist__time-label">SYSTEM DISRUPTION</span>
+          </motion.div>
 
           <motion.h2
             className="twist__heading"
@@ -39,21 +51,24 @@ export function HiddenTwist() {
               The rules shift. The strategy changes.
             </p>
             <div className="twist__commands">
-              <span>Adapt.</span>
-              <span className="twist__sep">/</span>
-              <span>Rebuild.</span>
-              <span className="twist__sep">/</span>
-              <span>Keep moving.</span>
+              <span>ADAPT.</span>
+              <span className="twist__sep">//</span>
+              <span>REBUILD.</span>
+              <span className="twist__sep">//</span>
+              <span>KEEP MOVING.</span>
             </div>
           </motion.div>
 
           <motion.div
-            className="twist__marker"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
+            className="twist__status"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          />
+            transition={{ duration: 0.5, delay: 0.6 }}
+          >
+            <span className="status-dot status-dot--active" />
+            <span className="twist__status-text">ACTIVE PROTOCOL // DISRUPTION STANDBY</span>
+          </motion.div>
         </div>
       </div>
     </section>

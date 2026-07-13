@@ -1,29 +1,94 @@
 .twist {
-  padding: var(--section-space-md) 0;
-  background: var(--color-surface);
+  padding: var(--section-space-xl) 0;
+  background: var(--deep);
   position: relative;
   overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.twist__bg {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.008) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.008) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.twist--disrupted {
+  animation: disruptPulse 0.7s ease-in-out;
+}
+
+@keyframes disruptPulse {
+  0% { filter: none; }
+  15% { filter: blur(1px); transform: translateX(3px); }
+  30% { filter: none; transform: translateX(-2px); }
+  45% { filter: blur(0.5px); transform: translateX(1px); }
+  60% { filter: none; transform: none; }
+  75% { filter: none; transform: translateX(-1px); }
+  100% { filter: none; transform: none; }
+}
+
+.twist--disrupted .twist__bg {
+  animation: gridShift 0.7s ease-in-out;
+}
+
+@keyframes gridShift {
+  0% { background-position: 0 0; }
+  20% { background-position: 4px 2px; }
+  40% { background-position: -3px 0; }
+  60% { background-position: 2px -1px; }
+  80% { background-position: -1px 1px; }
+  100% { background-position: 0 0; }
+}
+
+.twist--disrupted .twist__heading {
+  animation: headingJitter 0.6s ease-in-out;
+}
+
+@keyframes headingJitter {
+  0% { transform: none; }
+  20% { transform: translateX(2px) skewX(-1deg); }
+  40% { transform: translateX(-2px) skewX(1deg); }
+  60% { transform: translateX(1px); }
+  80% { transform: translateX(-1px); }
+  100% { transform: none; }
 }
 
 .twist__layout {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; gap: var(--space-8);
   max-width: 36rem;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
+}
+
+.twist__time-marker {
+  display: flex; align-items: center; gap: var(--space-3);
+}
+
+.twist__time-num {
+  font-family: var(--font-mono);
+  font-size: var(--text-heading-lg); font-weight: 700;
+  color: var(--color-accent); letter-spacing: -0.02em;
+}
+
+.twist__time-label {
+  font-family: var(--font-mono); font-size: var(--text-micro);
+  color: var(--color-text-muted); letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid rgba(255,77,0,0.2);
 }
 
 .twist__heading {
-  font-family: var(--font-display);
-  font-size: clamp(var(--text-heading-lg), 7vw, var(--text-section));
-  font-weight: 800;
-  line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-tight);
-  color: var(--color-text);
+  display: flex; flex-direction: column; gap: var(--space-1);
 }
 
 .twist__line {
-  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 7vw, 3.5rem);
+  font-weight: 900; line-height: 1.05;
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text);
 }
 
 .twist__line--break {
@@ -31,9 +96,7 @@
 }
 
 .twist__body {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
+  display: flex; flex-direction: column; gap: var(--space-4);
 }
 
 .twist__text {
@@ -43,23 +106,25 @@
 }
 
 .twist__commands {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3);
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
   font-size: var(--text-body-sm);
-  font-weight: 600;
   color: var(--color-text);
-  letter-spacing: 0.04em;
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
 }
 
 .twist__sep {
   color: var(--color-accent);
-  font-weight: 300;
+  opacity: 0.5;
 }
 
-.twist__marker {
-  width: 4rem;
-  height: 2px;
-  background: var(--color-accent);
-  transform-origin: left;
+.twist__status {
+  display: flex; align-items: center; gap: var(--space-2);
+  font-family: var(--font-mono); font-size: var(--text-micro);
+  color: var(--color-text-muted); letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  padding-top: var(--space-4);
+  border-top: 1px solid rgba(255,255,255,0.06);
 }

@@ -2,7 +2,17 @@
   padding-top: calc(var(--nav-height) + var(--space-8));
   padding-bottom: var(--space-16);
   min-height: 100dvh;
-  background: var(--color-bg);
+  background: var(--void);
+  position: relative;
+}
+
+.register-page__bg {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.008) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.008) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
 }
 
 @media (min-width: 768px) {
@@ -13,6 +23,15 @@
 
 .register-page__header {
   margin-bottom: var(--space-8);
+  position: relative; z-index: 1;
+}
+
+.register-page__badge {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  font-family: var(--font-mono); font-size: var(--text-micro);
+  color: var(--color-accent); letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  margin-bottom: var(--space-4);
 }
 
 .register-page__title {
@@ -21,20 +40,19 @@
   font-weight: 800;
   letter-spacing: var(--tracking-tight);
   margin-bottom: var(--space-3);
-}
-
-.register-page__title-accent {
-  color: var(--color-accent);
+  color: var(--color-text);
 }
 
 .register-page__desc {
   font-size: var(--text-body-md);
   color: var(--color-text-secondary);
   line-height: var(--leading-relaxed);
+  max-width: 32rem;
 }
 
 .register-page__form {
   max-width: 36rem;
+  position: relative; z-index: 1;
 }
 
 @media (max-width: 480px) {

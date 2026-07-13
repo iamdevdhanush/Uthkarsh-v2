@@ -3,9 +3,12 @@ import { Accordion } from '../ui/Accordion'
 import { rules as rulesData } from '../../data/rules'
 import { faqItems } from '../../data/faq'
 import { eventConfig } from '../../data/eventConfig'
+import { useReducedMotion } from '../../hooks/useReducedMotion'
 import './Guidelines.css'
 
 export function Guidelines() {
+  const reducedMotion = useReducedMotion()
+
   const accordionItems = rulesData.map((rule) => ({
     id: rule.category.toLowerCase().replace(/\s+/g, '-'),
     title: rule.category,
@@ -24,92 +27,97 @@ export function Guidelines() {
     content: faq.answer,
   }))
 
+  const sections = [
+    {
+      id: 'brochure',
+      title: '01 // OFFICIAL BROCHURE',
+      content: eventConfig.documents.brochureUrl ? (
+        <div className="event-brief__brochure">
+          <div className="event-brief__brochure-icon">
+            <span className="event-brief__brochure-doc" />
+          </div>
+          <div className="event-brief__brochure-info">
+            <p className="event-brief__brochure-name">
+              {eventConfig.eventName} — Event Brochure
+            </p>
+            <p className="event-brief__brochure-desc">
+              Complete event information, participation details and guidelines.
+            </p>
+          </div>
+          <a
+            href={eventConfig.documents.brochureUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="event-brief__brochure-cta"
+          >
+            <span>View Brochure</span>
+            <span className="event-brief__brochure-arrow">&rarr;</span>
+          </a>
+        </div>
+      ) : (
+        <p className="event-brief__placeholder">Brochure will be available soon.</p>
+      ),
+    },
+    {
+      id: 'prize',
+      title: '02 // PRIZE POOL',
+      content: (
+        <>
+          <p className="event-brief__placeholder">To be revealed. Winners receive certificates and recognition.</p>
+          <div className="event-brief__categories">
+            <div className="event-brief__cat">
+              <span className="event-brief__cat-num">01</span>
+              <span className="event-brief__cat-label">Winner</span>
+            </div>
+            <div className="event-brief__cat">
+              <span className="event-brief__cat-num">02</span>
+              <span className="event-brief__cat-label">Runner-up</span>
+            </div>
+            <div className="event-brief__cat">
+              <span className="event-brief__cat-num">03</span>
+              <span className="event-brief__cat-label">Recognition</span>
+            </div>
+          </div>
+        </>
+      ),
+    },
+    {
+      id: 'rules',
+      title: '03 // PROTOCOL RULES',
+      content: <Accordion items={accordionItems} />,
+    },
+    {
+      id: 'faq',
+      title: '04 // FREQUENTLY ASKED QUESTIONS',
+      content: <Accordion items={faqAccordionItems} />,
+    },
+  ]
+
   return (
     <section className="event-brief" id="guidelines">
       <div className="container">
-        <motion.div
-          className="event-brief__header"
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <span className="section-eyebrow">ACT 09 — THE BRIEF</span>
-          <h2 className="event-brief__title">Event Brief</h2>
-        </motion.div>
+        <div className="section-eyebrow">ACT 09 — EVENT DATABASE</div>
+        <h2 className="event-brief__title">Event Brief</h2>
 
         <div className="event-brief__sections">
-          {eventConfig.documents.brochureUrl && (
+          {sections.map((section, i) => (
             <motion.div
-              className="event-brief__section event-brief__section--brochure"
-              initial={{ opacity: 0, y: 15 }}
+              key={section.id}
+              className="event-brief__section"
+              initial={reducedMotion ? { opacity: 1 } : { opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.5, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.5, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
             >
-              <h3 className="event-brief__section-title">Official Brochure</h3>
-              <p className="event-brief__brochure-desc">
-                Everything participants need to know about {eventConfig.eventName}.
-              </p>
-              <a
-                href={eventConfig.documents.brochureUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="event-brief__brochure-cta"
-              >
-                View Brochure
-              </a>
+              <h3 className="event-brief__section-title">
+                <span className="event-brief__section-accent">#</span>
+                {section.title}
+              </h3>
+              <div className="event-brief__section-body">
+                {section.content}
+              </div>
             </motion.div>
-          )}
-
-          <motion.div
-            className="event-brief__section"
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <h3 className="event-brief__section-title">Prize Pool</h3>
-            <p className="event-brief__placeholder">
-              To be revealed. Winners receive certificates and recognition.
-            </p>
-            <div className="event-brief__categories">
-              <div className="event-brief__cat">
-                <span className="event-brief__cat-num">01</span>
-                <span className="event-brief__cat-label">Winner</span>
-              </div>
-              <div className="event-brief__cat">
-                <span className="event-brief__cat-num">02</span>
-                <span className="event-brief__cat-label">Runner-up</span>
-              </div>
-              <div className="event-brief__cat">
-                <span className="event-brief__cat-num">03</span>
-                <span className="event-brief__cat-label">Recognition</span>
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="event-brief__section event-brief__section--full"
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <h3 className="event-brief__section-title">Essential Rules</h3>
-            <Accordion items={accordionItems} />
-          </motion.div>
-
-          <motion.div
-            className="event-brief__section event-brief__section--full"
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.5, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <h3 className="event-brief__section-title">Frequently Asked Questions</h3>
-            <Accordion items={faqAccordionItems} />
-          </motion.div>
+          ))}
         </div>
       </div>
     </section>

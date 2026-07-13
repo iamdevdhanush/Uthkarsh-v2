@@ -1,20 +1,26 @@
 :root {
+  --void: #050505;
+  --deep: #090909;
   --paper: #F7F7F2;
-  --surface: #FFFFFF;
-  --ink: #090909;
+  --pure: #FFFFFF;
   --graphite: #555550;
   --muted: #8B8B84;
+  --grid-grey: #252525;
   --line: #D8D8D2;
   --orange: #FF4D00;
+  --energy: #FF6A00;
 
-  --color-bg: var(--paper);
-  --color-surface: var(--surface);
-  --color-text: var(--ink);
+  --color-bg: var(--void);
+  --color-surface: var(--deep);
+  --color-text: var(--paper);
   --color-text-secondary: var(--graphite);
   --color-text-muted: var(--muted);
   --color-accent: var(--orange);
-  --color-border: var(--line);
-  --color-overlay: rgba(9, 9, 9, 0.85);
+  --color-energy: var(--energy);
+  --color-border: var(--grid-grey);
+  --color-overlay: rgba(5, 5, 5, 0.92);
+  --color-light-section: var(--paper);
+  --color-light-text: var(--deep);
 
   --font-display: 'DM Sans', 'Inter', system-ui, -apple-system, sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
@@ -40,6 +46,7 @@
   --tracking-tight: -0.02em;
   --tracking-normal: 0;
   --tracking-wide: 0.04em;
+  --tracking-mono: 0.08em;
 
   --space-1: 0.25rem;
   --space-2: 0.5rem;
@@ -85,4 +92,13 @@
   :root {
     --nav-height: 4rem;
   }
+}
+
+.light-section {
+  --color-bg: var(--color-light-section);
+  --color-text: var(--color-light-text);
+  --color-text-secondary: var(--graphite);
+  --color-text-muted: var(--muted);
+  --color-border: var(--line);
+  --color-surface: var(--pure);
 }

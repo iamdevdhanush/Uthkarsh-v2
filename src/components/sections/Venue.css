@@ -1,152 +1,131 @@
 .venue {
-  padding: var(--section-space-lg) 0;
-  background: var(--color-surface);
+  padding: var(--section-space-xl) 0;
+  background: var(--deep);
+  position: relative;
 }
 
 .venue__layout {
-  display: grid;
-  gap: var(--space-8);
-  align-items: center;
+  display: grid; gap: var(--space-8);
+  margin-top: var(--space-6);
 }
 
 @media (min-width: 768px) {
-  .venue__layout {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-12);
-  }
+  .venue__layout { grid-template-columns: 1fr 1.2fr; gap: var(--space-16); align-items: center; }
 }
 
+.venue__info { display: flex; flex-direction: column; gap: var(--space-4); }
+
 .venue__title {
-  font-family: var(--font-display);
-  font-size: clamp(var(--text-heading-md), 5vw, var(--text-heading-xl));
-  font-weight: 800;
-  margin-bottom: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-heading-md); font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: var(--tracking-mono);
 }
 
 .venue__name {
-  font-size: var(--text-body-md);
-  font-weight: 600;
-  margin-bottom: var(--space-1);
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  font-weight: 800; letter-spacing: var(--tracking-tight);
+  color: var(--color-text);
 }
 
 .venue__location {
+  font-family: var(--font-mono);
   font-size: var(--text-body-sm);
-  color: var(--color-text-secondary);
-  margin-bottom: var(--space-5);
+  color: var(--color-text-muted);
+  letter-spacing: var(--tracking-mono);
 }
 
 .venue__details {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  margin-bottom: var(--space-5);
+  display: flex; flex-direction: column; gap: var(--space-2);
+  border: 1px solid rgba(255,255,255,0.06);
   padding: var(--space-4);
-  border: 1px solid var(--color-border);
-  background: var(--color-bg);
+  max-width: 20rem;
 }
 
 .venue__detail {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--space-4);
-}
-
-.venue__detail-label {
-  font-family: var(--font-mono);
-  font-size: var(--text-micro);
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  color: var(--color-text-muted);
+  display: flex; justify-content: space-between;
+  font-family: var(--font-mono); font-size: var(--text-micro);
+  letter-spacing: var(--tracking-mono);
   text-transform: uppercase;
 }
 
-.venue__detail-value {
-  font-size: var(--text-body-sm);
-  font-weight: 600;
-  color: var(--color-text);
-}
+.venue__detail-label { color: var(--color-text-muted); }
+.venue__detail-value { color: var(--color-text); }
 
 .venue__maps-cta {
-  display: inline-flex;
-  align-items: center;
-  height: 2.75rem;
-  padding: 0 var(--space-6);
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  height: 2.75rem; padding: 0 var(--space-5);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: var(--color-text);
   font-family: var(--font-display);
-  font-size: var(--text-body-md);
-  font-weight: 600;
-  letter-spacing: var(--tracking-tight);
-  background: var(--color-text);
-  color: var(--surface);
-  transition: background var(--duration-fast) var(--ease-out);
-  text-decoration: none;
+  font-size: var(--text-body-sm); font-weight: 600;
+  transition: all var(--duration-fast) var(--ease-out);
 }
 
 .venue__maps-cta:hover {
-  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
 }
 
-.venue__card {
-  display: flex;
-  justify-content: center;
+.venue__maps-arrow { font-family: var(--font-mono); }
+
+/* Map */
+.venue__map-wrap { position: relative; }
+
+.venue__map-frame {
+  border: 1px solid rgba(255,255,255,0.08);
+  overflow: hidden;
 }
 
-.venue__card-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-8) var(--space-6);
-  border: 1px solid var(--color-border);
-  background: var(--color-bg);
-  text-align: center;
+.venue__map-top {
+  display: flex; align-items: center; gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-mono); font-size: var(--text-micro);
+  color: var(--color-text-muted); letter-spacing: var(--tracking-mono);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+}
+
+.venue__map-coord { color: var(--color-text-secondary); }
+
+.venue__map-sep { color: var(--grid-grey); }
+
+.venue__map-label { color: var(--color-accent); }
+
+.venue__map {
+  position: relative;
   width: 100%;
-  max-width: 22rem;
+  aspect-ratio: 4 / 3;
 }
 
-.venue__card-label {
-  font-family: var(--font-display);
-  font-size: var(--text-heading-lg);
-  font-weight: 800;
-  color: var(--color-text);
-  letter-spacing: -0.02em;
+.venue__map iframe {
+  position: absolute; inset: 0;
 }
 
-.venue__card-campus {
-  font-size: var(--text-body-sm);
-  color: var(--color-text-secondary);
-  letter-spacing: 0.04em;
+.venue__map-fallback {
+  display: none;
+  position: absolute; inset: 0;
+  align-items: center; justify-content: center;
+  flex-direction: column; gap: var(--space-3);
+  background: var(--void);
 }
 
-.venue__card-rule {
-  width: 3rem;
-  height: 1px;
-  background: var(--color-accent);
-  opacity: 0.4;
-}
-
-.venue__card-address {
-  font-size: var(--text-body-sm);
+.venue__map-fallback-text {
+  font-family: var(--font-mono); font-size: var(--text-body-sm);
   color: var(--color-text-muted);
-  line-height: var(--leading-relaxed);
 }
 
-.venue__card-cta {
-  display: inline-flex;
-  align-items: center;
-  height: 2.5rem;
-  padding: 0 var(--space-5);
-  font-family: var(--font-display);
+.venue__map-fallback-cta {
   font-size: var(--text-body-sm);
-  font-weight: 600;
-  letter-spacing: var(--tracking-tight);
-  background: var(--color-text);
-  color: var(--surface);
-  transition: background var(--duration-fast) var(--ease-out);
-  text-decoration: none;
-  margin-top: var(--space-2);
+  color: var(--color-accent);
+  text-decoration: underline;
 }
 
-.venue__card-cta:hover {
-  background: var(--color-accent);
+.venue__map-bottom {
+  display: flex; justify-content: space-between;
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-mono); font-size: var(--text-micro);
+  color: var(--color-text-muted);
+  border-top: 1px solid rgba(255,255,255,0.06);
 }

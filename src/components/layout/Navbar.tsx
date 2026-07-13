@@ -45,6 +45,7 @@ export function Navbar({ onMenuToggle, menuOpen }: NavbarProps) {
 
       <div className="navbar__inner container">
         <Link to="/" className="navbar__logo" aria-label={`${eventConfig.eventName} homepage`}>
+          <span className="navbar__logo-dot" />
           <span className="navbar__logo-name">{eventConfig.eventName}</span>
         </Link>
 

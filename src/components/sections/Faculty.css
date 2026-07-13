@@ -1,116 +1,141 @@
 .faculty {
-  padding: var(--section-space-lg) 0;
-  background: var(--color-surface);
-}
-
-.faculty__header {
-  margin-bottom: var(--space-8);
+  padding: var(--section-space-xl) 0;
+  background: var(--deep);
+  position: relative;
+  overflow: hidden;
 }
 
 .faculty__heading {
   font-family: var(--font-display);
-  font-size: clamp(var(--text-heading-md), 5vw, var(--text-heading-xl));
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
   font-weight: 800;
-  letter-spacing: var(--tracking-tight);
-}
-
-.faculty__leadership {
-  display: grid;
-  gap: var(--space-6);
+  color: var(--color-text);
   margin-bottom: var(--space-8);
 }
 
-@media (min-width: 540px) {
-  .faculty__leadership {
-    grid-template-columns: 1fr 1fr;
-  }
+.faculty__leadership {
+  display: grid; gap: var(--space-5);
+  margin-bottom: var(--space-10);
+}
+
+@media (min-width: 600px) {
+  .faculty__leadership { grid-template-columns: 1fr 1fr; }
+}
+
+.faculty__divider {
+  display: flex; align-items: center; gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.faculty__divider-line {
+  flex: 1; height: 1px;
+  background: var(--grid-grey);
+}
+
+.faculty__divider-label {
+  font-family: var(--font-mono); font-size: var(--text-micro);
+  color: var(--color-text-muted); letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
 }
 
 .faculty__grid {
   display: grid;
-  gap: var(--space-6);
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
 }
 
-@media (min-width: 540px) {
-  .faculty__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+@media (min-width: 600px) {
+  .faculty__grid { grid-template-columns: repeat(3, 1fr); }
 }
 
-@media (min-width: 900px) {
-  .faculty__grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+@media (min-width: 768px) {
+  .faculty__grid { gap: var(--space-5); }
 }
 
 .faculty__card {
-  display: flex;
-  flex-direction: column;
+  display: flex; flex-direction: column; gap: var(--space-3);
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  padding: var(--space-4);
+  transition: border-color var(--duration-fast) var(--ease-out);
 }
 
-.faculty__card--leader .faculty__image-wrap {
-  aspect-ratio: 4 / 5;
+.faculty__card:hover {
+  border-color: rgba(255,77,0,0.3);
+}
+
+.faculty__card--leader {
+  border-color: rgba(255,77,0,0.15);
+}
+
+.faculty__index {
+  display: flex; align-items: center; gap: var(--space-2);
+}
+
+.faculty__index-num {
+  font-family: var(--font-mono); font-size: var(--text-micro);
+  color: var(--color-text-muted); letter-spacing: var(--tracking-mono);
+}
+
+.faculty__index-line {
+  flex: 1; height: 1px; background: var(--grid-grey);
 }
 
 .faculty__image-wrap {
   position: relative;
-  aspect-ratio: 3 / 4;
-  background: var(--color-bg);
+  aspect-ratio: 1;
   overflow: hidden;
-  margin-bottom: var(--space-3);
-  width: 100%;
+  background: var(--void);
 }
 
 .faculty__image {
-  width: 100%;
-  height: 100%;
+  width: 100%; height: 100%;
   object-fit: cover;
 }
 
 .faculty__placeholder {
   display: none;
-  position: absolute;
-  inset: 0;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: var(--color-border);
+  position: absolute; inset: 0;
+  align-items: center; justify-content: center;
+  background: var(--void);
 }
 
 .faculty__placeholder-initial {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 6vw, 3.5rem);
-  font-weight: 900;
-  color: var(--color-text);
-  opacity: 0.15;
-  line-height: 1;
+  font-size: var(--text-heading-xl);
+  font-weight: 800;
+  color: var(--color-text-muted);
 }
 
 .faculty__info {
-  padding-right: var(--space-2);
+  display: flex; flex-direction: column; gap: var(--space-1);
+}
+
+.faculty__status-line {
+  width: 1.5rem; height: 2px;
+  background: var(--color-accent);
+  opacity: 0.5;
 }
 
 .faculty__name {
   font-family: var(--font-display);
   font-size: var(--text-body-md);
   font-weight: 700;
-  line-height: var(--leading-snug);
-  letter-spacing: var(--tracking-tight);
   color: var(--color-text);
-  word-wrap: break-word;
-  overflow-wrap: break-word;
 }
 
 .faculty__name--pending {
-  opacity: 0.3;
+  color: var(--color-text-muted);
+  font-style: italic;
 }
 
 .faculty__role {
   font-size: var(--text-body-sm);
   color: var(--color-text-secondary);
-  margin-top: 2px;
 }
 
-.faculty__card--leader .faculty__name {
-  font-size: var(--text-body-lg);
+@media (max-width: 480px) {
+  .faculty__grid { grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+  .faculty__card { padding: var(--space-3); }
+  .faculty__card--leader { grid-column: 1 / -1; }
 }
