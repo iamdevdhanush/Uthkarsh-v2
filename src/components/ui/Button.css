@@ -9,6 +9,7 @@
   border-radius: 0;
   transition: all var(--duration-fast) var(--ease-out);
   white-space: nowrap;
+  word-break: break-word;
   cursor: pointer;
   position: relative;
   overflow: hidden;

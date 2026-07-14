@@ -86,17 +86,17 @@
 
 .twist__time-label {
   font-family: var(--font-mono); font-size: var(--text-micro);
-  color: var(--soft-coral); letter-spacing: var(--tracking-mono);
+  color: var(--color-accent); letter-spacing: var(--tracking-mono);
   text-transform: uppercase;
   padding: var(--space-1) var(--space-3);
   border: 1px solid rgba(79, 125, 255, 0.25);
-  box-shadow: 0 0 10px var(--glow-coral);
+  box-shadow: 0 0 10px var(--glow-blue);
   animation: warningPulse 2s ease-in-out infinite;
 }
 
 @keyframes warningPulse {
-  0%, 100% { box-shadow: 0 0 10px var(--glow-coral); }
-  50% { box-shadow: 0 0 20px var(--glow-coral), 0 0 30px rgba(79, 125, 255, 0.15); }
+  0%, 100% { box-shadow: 0 0 10px var(--glow-blue); }
+  50% { box-shadow: 0 0 20px var(--glow-blue), 0 0 30px rgba(79, 125, 255, 0.15); }
 }
 
 .twist__heading {
@@ -112,7 +112,7 @@
 }
 
 .twist__line--break {
-  color: var(--soft-coral);
+  color: var(--color-accent);
 }
 
 .twist__body {

@@ -53,12 +53,12 @@
 }
 
 .reg-field__input--error {
-  border-color: var(--soft-coral);
+  border-color: var(--color-accent);
 }
 
 .reg-field__error {
   font-size: var(--text-body-sm);
-  color: var(--soft-coral);
+  color: var(--color-accent);
   margin-top: 2px;
   font-weight: 500;
 }
@@ -254,7 +254,7 @@
 }
 
 .reg-error-banner {
-  background: var(--soft-coral);
+  background: var(--color-accent);
   color: var(--pure);
   padding: var(--space-3) var(--space-4);
   font-size: var(--text-body-sm);

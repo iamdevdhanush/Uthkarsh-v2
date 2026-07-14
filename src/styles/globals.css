@@ -11,6 +11,7 @@ html {
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -25,6 +26,8 @@ body {
   background-color: var(--color-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 img, video, canvas { display: block; max-width: 100%; }
@@ -197,26 +200,6 @@ p { text-wrap: pretty; }
 .section-surface--charcoal { background-color: var(--color-charcoal); }
 .section-surface--gunmetal { background-color: var(--color-gunmetal); }
 .section-surface--warm-black { background-color: var(--color-warm-black); }
-
-/* Ghost text overlay utility */
-.ghost-overlay {
-  position: absolute;
-  pointer-events: none;
-  user-select: none;
-  z-index: 0;
-}
-
-.ghost-text {
-  font-family: var(--font-mono);
-  font-weight: 900;
-  color: var(--color-text);
-  opacity: 0.025;
-  line-height: 1;
-  letter-spacing: -0.04em;
-  text-transform: uppercase;
-  pointer-events: none;
-  user-select: none;
-}
 
 /* Consistent scroll-margin for all anchored sections */
 section[id] {
@@ -686,7 +669,7 @@ section {
 }
 
 .glitch-text::after {
-  color: var(--soft-coral);
+  color: var(--color-accent);
   animation: glitchAfter 3s infinite;
   clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
 }
@@ -787,7 +770,7 @@ section {
 
 @keyframes warningFlash {
   0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; box-shadow: 0 0 15px var(--soft-coral); }
+  50% { opacity: 1; box-shadow: 0 0 15px var(--color-accent); }
 }
 
 /* ============================================================
@@ -833,4 +816,24 @@ section {
 @keyframes radarRotate {
   from { transform: translate(-50%, -50%) rotate(0deg); }
   to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* ============================================================
+   Custom Scrollbar
+   ============================================================ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--void); }
+::-webkit-scrollbar-thumb { background: var(--grid-grey); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-text-muted); }
+
+/* ============================================================
+   Mobile Optimizations
+   ============================================================ */
+@media (max-width: 480px) {
+  .btn {
+    white-space: normal;
+    height: auto;
+    min-height: 2.75rem;
+    padding: var(--space-2) var(--space-4);
+  }
 }

@@ -466,7 +466,7 @@
 }
 
 .hero__time-sep {
-  font-weight: 700; color: var(--soft-coral);
+  font-weight: 700; color: var(--color-accent);
   animation: clockPulse 1s ease-in-out infinite;
 }
 
