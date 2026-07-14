@@ -42,7 +42,27 @@
   padding: var(--space-5);
   border: 1px solid var(--color-border);
   position: relative;
+  background: var(--color-surface);
+  transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out), border-color 0.4s var(--ease-out);
 }
+
+.stats__item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(77,124,254,0.04) 0%, transparent 50%, rgba(139,92,246,0.03) 100%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-out);
+}
+
+.stats__item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(77, 124, 254, 0.08);
+  border-color: rgba(77, 124, 254, 0.2);
+}
+
+.stats__item:hover::before { opacity: 1; }
 
 .stats__item:nth-child(2) {
   --accent-color: var(--color-accent);

@@ -5,6 +5,20 @@
   transition: all 0.3s ease;
 }
 
+.twist::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, rgba(255, 107, 122, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+  animation: twistGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes twistGlow {
+  0% { opacity: 0.3; }
+  100% { opacity: 0.8; }
+}
+
 .twist__bg {
   position: absolute; inset: 0;
   background-image:
@@ -77,6 +91,12 @@
   padding: var(--space-1) var(--space-3);
   border: 1px solid rgba(255, 107, 122, 0.25);
   box-shadow: 0 0 10px var(--glow-coral);
+  animation: warningPulse 2s ease-in-out infinite;
+}
+
+@keyframes warningPulse {
+  0%, 100% { box-shadow: 0 0 10px var(--glow-coral); }
+  50% { box-shadow: 0 0 20px var(--glow-coral), 0 0 30px rgba(255, 107, 122, 0.15); }
 }
 
 .twist__heading {

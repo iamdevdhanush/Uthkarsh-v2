@@ -115,13 +115,29 @@
   padding: var(--space-4);
   display: flex; flex-direction: column; gap: var(--space-3);
   transition: border-color var(--duration-fast) var(--ease-out),
-              box-shadow var(--duration-fast) var(--ease-out);
+              box-shadow var(--duration-fast) var(--ease-out),
+              transform 0.4s var(--ease-out);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact__card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(77,124,254,0.04) 0%, transparent 50%, rgba(139,92,246,0.03) 100%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-out);
 }
 
 .contact__card:hover {
   border-color: rgba(77, 124, 254, 0.3);
   box-shadow: 0 0 12px var(--glow-blue);
+  transform: translateY(-3px);
 }
+
+.contact__card:hover::before { opacity: 1; }
 
 .contact__card-header {
   display: flex; align-items: center; justify-content: space-between;

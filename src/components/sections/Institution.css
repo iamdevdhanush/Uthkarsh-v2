@@ -19,6 +19,25 @@
   background: var(--void);
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
+}
+
+.institution__frame::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg at 50% 50%, transparent, rgba(77,124,254,0.02), transparent, rgba(139,92,246,0.01), transparent);
+  pointer-events: none;
+  animation: glassRotate 15s linear infinite;
+}
+
+.institution__frame:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(77, 124, 254, 0.06);
 }
 
 .institution__frame-top {
@@ -120,6 +139,12 @@
   padding: var(--space-2) var(--space-3);
   border: 1px solid rgba(77, 124, 254, 0.25);
   background: rgba(77, 124, 254, 0.04);
+  transition: border-color 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+}
+
+.institution__host-badge:hover {
+  border-color: rgba(77, 124, 254, 0.5);
+  box-shadow: 0 0 15px rgba(77, 124, 254, 0.1);
 }
 
 .institution__host-dot {

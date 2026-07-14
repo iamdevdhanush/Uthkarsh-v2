@@ -30,6 +30,7 @@
 
 .accordion__trigger:hover {
   color: var(--color-accent);
+  padding-left: var(--space-1);
 }
 
 .accordion__trigger--open {
