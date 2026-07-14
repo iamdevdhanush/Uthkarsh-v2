@@ -1,6 +1,5 @@
 .contact {
   padding: var(--section-space-xl) 0;
-  background: var(--void);
   position: relative;
   overflow: hidden;
 }

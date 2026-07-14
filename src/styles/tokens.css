@@ -1,6 +1,9 @@
 :root {
   --void: #050505;
   --deep: #090909;
+  --charcoal: #1A1A18;
+  --gunmetal: #151514;
+  --warm-black: #0A0A09;
   --paper: #F7F7F2;
   --pure: #FFFFFF;
   --graphite: #777770;
@@ -9,14 +12,25 @@
   --line: #D8D8D2;
   --orange: #FF4D00;
   --energy: #FF6A00;
+  --gold: #C8A951;
+  --gold-muted: #B8963E;
+  --amber: #A67C00;
+  --gold-subtle: rgba(200, 169, 81, 0.12);
 
   --color-bg: var(--void);
   --color-surface: var(--deep);
+  --color-charcoal: var(--charcoal);
+  --color-gunmetal: var(--gunmetal);
+  --color-warm-black: var(--warm-black);
   --color-text: var(--paper);
   --color-text-secondary: var(--graphite);
   --color-text-muted: var(--muted);
   --color-accent: var(--orange);
   --color-energy: var(--energy);
+  --color-gold: var(--gold);
+  --color-gold-muted: var(--gold-muted);
+  --color-amber: var(--amber);
+  --color-gold-subtle: var(--gold-subtle);
   --color-border: var(--grid-grey);
   --color-overlay: rgba(5, 5, 5, 0.92);
   --color-light-section: var(--paper);

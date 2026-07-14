@@ -45,7 +45,7 @@ function FacultyCard({ member, index }: { member: typeof facultyMembers[number];
           <span className="faculty__placeholder-initial">
             {member.id === 'principal' ? 'PR' :
              member.id === 'hod' ? 'HD' :
-             member.id.charAt(0).toUpperCase()}
+             member.id.charAt(0).toUpperCase() + (member.id.length > 1 ? member.id.charAt(1) : '')}
           </span>
         </div>
       </div>
@@ -69,7 +69,7 @@ export function Faculty() {
   const others = facultyMembers.filter(m => m.id !== 'principal' && m.id !== 'hod')
 
   return (
-    <section className="faculty" id="faculty">
+    <section className="faculty section-surface--charcoal" id="faculty">
       <div className="container">
         <div className="section-eyebrow">ACT 08 — PERSONNEL DIRECTORY</div>
         <h2 className="faculty__heading">People Behind the Protocol</h2>

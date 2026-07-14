@@ -10,7 +10,7 @@ export function Institution() {
   const [logoError, setLogoError] = useState(false)
 
   return (
-    <section className="institution" id="institution">
+    <section className="institution section-surface--gunmetal" id="institution">
       <div className="container">
         <div className="section-eyebrow">ACT 07 — HOST LOCATION</div>
         <div className="institution__layout">

@@ -1,8 +1,17 @@
 .timeline {
   padding: var(--section-space-xl) 0;
-  background: var(--void);
   position: relative;
-  scroll-margin-top: var(--nav-height);
+}
+
+.timeline::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.008) 0px, transparent 1px, transparent 60px),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.008) 0px, transparent 1px, transparent 60px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 .timeline__layout {

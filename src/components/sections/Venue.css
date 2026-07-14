@@ -1,8 +1,15 @@
 .venue {
   padding: var(--section-space-xl) 0;
-  background: var(--deep);
   position: relative;
-  scroll-margin-top: var(--nav-height);
+}
+
+.venue::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(0deg, rgba(5,5,5,0.6) 0%, transparent 40%, transparent 60%, rgba(5,5,5,0.4) 100%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .venue__layout {
@@ -77,6 +84,9 @@
 .venue__map-frame {
   border: 1px solid rgba(255,255,255,0.08);
   overflow: hidden;
+  background: var(--void);
+  position: relative;
+  z-index: 1;
 }
 
 .venue__map-top {

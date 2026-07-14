@@ -22,6 +22,7 @@ const navItems = [
 
 export function Navbar({ onMenuToggle, menuOpen }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false)
+  const [activeSection, setActiveSection] = useState('')
   const location = useLocation()
   const reducedMotion = useReducedMotion()
   const scrollProgress = useScrollProgress()
@@ -33,6 +34,26 @@ export function Navbar({ onMenuToggle, menuOpen }: NavbarProps) {
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  useEffect(() => {
+    if (location.pathname !== '/') return
+    const sectionIds = navItems.filter(n => n.href.startsWith('#')).map(n => n.href.slice(1))
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id)
+          }
+        }
+      },
+      { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
+    )
+    sectionIds.forEach(id => {
+      const el = document.getElementById(id)
+      if (el) observer.observe(el)
+    })
+    return () => observer.disconnect()
+  }, [location.pathname])
 
   const isHome = location.pathname === '/'
 
@@ -55,11 +76,15 @@ export function Navbar({ onMenuToggle, menuOpen }: NavbarProps) {
 
         <nav className="navbar__desktop" aria-label="Main navigation">
           {isHome ? (
-            navItems.map((item) => (
-              <a key={item.href} href={item.href} className="navbar__link">
-                {item.label}
-              </a>
-            ))
+            navItems.map((item) => {
+              const sectionId = item.href.startsWith('#') ? item.href.slice(1) : ''
+              const isActive = sectionId && activeSection === sectionId
+              return (
+                <a key={item.href} href={item.href} className={`navbar__link${isActive ? ' navbar__link--active' : ''}`}>
+                  {item.label}
+                </a>
+              )
+            })
           ) : (
             <Link to="/" className="navbar__link">
               Home
@@ -102,19 +127,23 @@ export function Navbar({ onMenuToggle, menuOpen }: NavbarProps) {
             >
               <nav className="navbar__mobile-nav" aria-label="Mobile navigation">
                 {isHome ? (
-                  navItems.map((item, i) => (
-                    <motion.a
-                      key={item.href}
-                      href={item.href}
-                      className="navbar__mobile-link"
-                      onClick={() => onMenuToggle(false)}
-                      initial={reducedMotion ? { x: 0 } : { x: 30, opacity: 0 }}
-                      animate={{ x: 0, opacity: 1 }}
-                      transition={{ delay: reducedMotion ? 0 : i * 0.06, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                    >
-                      {item.label}
-                    </motion.a>
-                  ))
+                  navItems.map((item, i) => {
+                    const sectionId = item.href.startsWith('#') ? item.href.slice(1) : ''
+                    const isActive = sectionId && activeSection === sectionId
+                    return (
+                      <motion.a
+                        key={item.href}
+                        href={item.href}
+                        className={`navbar__mobile-link${isActive ? ' navbar__mobile-link--active' : ''}`}
+                        onClick={() => onMenuToggle(false)}
+                        initial={reducedMotion ? { x: 0 } : { x: 30, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: reducedMotion ? 0 : i * 0.06, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                      >
+                        {item.label}
+                      </motion.a>
+                    )
+                  })
                 ) : (
                   <motion.a
                     href="/"

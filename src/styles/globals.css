@@ -192,3 +192,33 @@ p { text-wrap: pretty; }
 .data-row__accent {
   color: var(--color-accent);
 }
+
+/* Section surface variants */
+.section-surface--charcoal { background-color: var(--color-charcoal); }
+.section-surface--gunmetal { background-color: var(--color-gunmetal); }
+.section-surface--warm-black { background-color: var(--color-warm-black); }
+
+/* Ghost text overlay utility */
+.ghost-overlay {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+.ghost-text {
+  font-family: var(--font-mono);
+  font-weight: 900;
+  color: var(--color-text);
+  opacity: 0.025;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Consistent scroll-margin for all anchored sections */
+section[id] {
+  scroll-margin-top: var(--nav-height);
+}

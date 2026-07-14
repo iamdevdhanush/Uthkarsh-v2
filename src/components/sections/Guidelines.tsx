@@ -75,7 +75,7 @@ export function Guidelines() {
     },
     {
       id: 'prize',
-      title: '02 // PRIZE POOL — UNLOCKED',
+      title: '02 // REWARDS // UNLOCKED',
       content: (
         <div className="event-brief__prizes">
           <div className="event-brief__prizes-total">
@@ -128,7 +128,7 @@ export function Guidelines() {
   ]
 
   return (
-    <section className="event-brief" id="guidelines">
+    <section className="event-brief section-surface--warm-black" id="guidelines">
       <div className="container">
         <div className="section-eyebrow">ACT 09 — EVENT DATABASE</div>
         <h2 className="event-brief__title">Event Brief</h2>

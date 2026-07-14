@@ -16,7 +16,7 @@ export function Venue() {
   const [imageError, setImageError] = useState(false)
 
   return (
-    <section className="venue" id="venue">
+    <section className="venue section-surface--warm-black" id="venue">
       <div className="container">
         <div className="section-eyebrow">ACT 10 \u2014 LOCATION TERMINAL</div>
         <div className="venue__layout">

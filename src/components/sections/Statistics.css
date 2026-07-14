@@ -11,8 +11,30 @@
   gap: var(--space-4);
 }
 
-@media (min-width: 768px) {
-  .stats__grid { grid-template-columns: repeat(4, 1fr); gap: var(--space-6); }
+@media (min-width: 640px) {
+  .stats__grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+  }
+  .stats__item:first-child {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+  .stats__item:first-child .stats__index { grid-column: 1 / -1; }
+  .stats__item:first-child .stats__value {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+  }
+}
+
+@media (min-width: 900px) {
+  .stats__grid {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+  }
+  .stats__item:first-child { grid-column: auto; grid-template-columns: auto; }
+  .stats__item:first-child .stats__value { font-size: clamp(2rem, 6vw, 3rem); }
 }
 
 .stats__item {
@@ -20,6 +42,18 @@
   padding: var(--space-5);
   border: 1px solid var(--color-border);
   position: relative;
+}
+
+.stats__item:nth-child(2) {
+  --accent-color: var(--color-accent);
+}
+
+.stats__item:nth-child(3) {
+  --accent-color: var(--color-text);
+}
+
+.stats__item:nth-child(4) {
+  --accent-color: var(--color-text-muted);
 }
 
 .stats__index {
@@ -30,10 +64,12 @@
 .stats__index-num {
   font-family: var(--font-mono); font-size: var(--text-micro);
   color: var(--color-text-muted); letter-spacing: var(--tracking-mono);
+  font-feature-settings: 'tnum';
 }
 
 .stats__index-line {
-  flex: 1; height: 1px; background: var(--color-border);
+  flex: 1; height: 1px;
+  background: linear-gradient(90deg, var(--color-border), transparent);
 }
 
 .stats__value {
@@ -42,6 +78,7 @@
   font-weight: 900; line-height: 1;
   letter-spacing: var(--tracking-tight);
   color: var(--color-text);
+  font-feature-settings: 'tnum';
 }
 
 .stats__label {
@@ -63,10 +100,12 @@
 .stats__bar {
   height: 2px; background: var(--color-border);
   margin-top: var(--space-2);
+  overflow: hidden;
 }
 
 .stats__bar-fill {
-  height: 100%; background: var(--color-accent);
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-color, var(--color-accent)), transparent);
 }
 
 .stats__footer {

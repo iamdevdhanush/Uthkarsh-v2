@@ -65,7 +65,7 @@ export function ContactSection() {
   const facultyWithData = contactConfig.facultyCoordinators.some(c => c.name || c.phone || c.email)
 
   return (
-    <section className="contact" id="contact">
+    <section className="contact section-surface--charcoal" id="contact">
       <div className="container">
         <div className="contact__header">
           <div className="contact__status">

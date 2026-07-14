@@ -1,6 +1,5 @@
 .twist {
   padding: var(--section-space-xl) 0;
-  background: var(--deep);
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;

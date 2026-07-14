@@ -22,7 +22,7 @@ export function Timeline() {
   const progressWidth = useTransform(scrollYProgress, [0, 0.5], ['0%', '100%'])
 
   return (
-    <section className="timeline" ref={sectionRef} id="timeline">
+    <section className="timeline section-surface--gunmetal" ref={sectionRef} id="timeline">
       <div className="container">
         <div className="section-eyebrow">ACT 06 — OPERATION SEQUENCE</div>
         <div className="timeline__layout">

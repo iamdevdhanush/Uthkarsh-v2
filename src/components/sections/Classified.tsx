@@ -6,7 +6,7 @@ export function Classified() {
   const reducedMotion = useReducedMotion()
 
   return (
-    <section className="classified" id="challenge">
+    <section className="classified section-surface--void" id="challenge">
       <div className="container">
         <div className="section-eyebrow">ACT 04 — CLASSIFIED DATA</div>
         <div className="classified__layout">

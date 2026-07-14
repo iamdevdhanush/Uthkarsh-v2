@@ -5,7 +5,7 @@ import './FinalCTA.css'
 
 export function FinalCTA() {
   return (
-    <section className="final-cta" id="register">
+    <section className="final-cta section-surface--deep" id="register">
       <div className="container">
         <div className="final-cta__system-bar">
           <div className="final-cta__sys-item">
