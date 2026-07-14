@@ -306,19 +306,13 @@ export function Guidelines() {
       content: (
         <div>
           <div className="faq-accordion">
-            {displayedFaqs.map((faq) => {
-              const faqId = faq.question.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+$/, '')
-              return (
-                <Accordion
-                  key={faqId}
-                  items={[{
-                    id: faqId,
-                    title: faq.question,
-                    content: faq.answer,
-                  }]}
-                />
-              )
-            })}
+            <Accordion
+              items={displayedFaqs.map(faq => ({
+                id: faq.question.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+$/, ''),
+                title: faq.question,
+                content: faq.answer,
+              }))}
+            />
           </div>
           {faqItems.length > 5 && (
             <div className="faq-toggle">

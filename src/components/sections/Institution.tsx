@@ -4,7 +4,6 @@ import { eventConfig } from '../../data/eventConfig'
 import './Institution.css'
 
 export function Institution() {
-  const [videoLoaded, setVideoLoaded] = useState(false)
   const [videoError, setVideoError] = useState(false)
   const [imageError, setImageError] = useState(false)
   const [logoError, setLogoError] = useState(false)
@@ -31,11 +30,10 @@ export function Institution() {
 
               {!videoError ? (
                 <video
-                  className={`institution__video${videoLoaded ? ' institution__video--ready' : ''}`}
+                  className="institution__video"
                   src={eventConfig.media.campusVideo}
                   muted autoPlay playsInline loop preload="auto"
                   poster={eventConfig.media.campusImage}
-                  onLoadedData={() => setVideoLoaded(true)}
                   onError={() => setVideoError(true)}
                 />
               ) : !imageError ? (
