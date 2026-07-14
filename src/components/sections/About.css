@@ -72,7 +72,7 @@
 
 @keyframes dotPulse {
   0%, 100% { box-shadow: 0 0 8px var(--color-accent); }
-  50% { box-shadow: 0 0 15px var(--color-accent), 0 0 25px rgba(77,124,254,0.2); }
+  50% { box-shadow: 0 0 15px var(--color-accent), 0 0 25px rgba(79, 125, 255,0.2); }
 }
 
 .about__body {
@@ -105,8 +105,8 @@
 }
 
 .about__param:hover {
-  border-color: rgba(77, 124, 254, 0.15);
-  background: rgba(77, 124, 254, 0.03);
+  border-color: rgba(79, 125, 255, 0.15);
+  background: rgba(79, 125, 255, 0.03);
 }
 
 .about__param-label {

@@ -268,8 +268,8 @@ section[id] {
   transition: border-color var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
 }
 .glow-glow-card:hover {
-  border-color: rgba(139, 92, 246, 0.3);
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.1);
+  border-color: rgba(126, 182, 255, 0.3);
+  box-shadow: 0 0 20px rgba(126, 182, 255, 0.1);
 }
 
 /* ============================================================
@@ -293,83 +293,6 @@ section[id] {
 }
 
 /* ============================================================
-   ENHANCED: Custom Cursor
-   ============================================================ */
-.custom-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 10px;
-  height: 10px;
-  pointer-events: none;
-  z-index: 99999;
-  mix-blend-mode: difference;
-}
-
-.custom-cursor__dot {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 4px;
-  height: 4px;
-  background: white;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: width 0.3s ease, height 0.3s ease;
-}
-
-.custom-cursor__ring {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 20px;
-  height: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
-}
-
-.custom-cursor--hover .custom-cursor__dot {
-  width: 6px;
-  height: 6px;
-}
-
-.custom-cursor--hover .custom-cursor__ring {
-  width: 32px;
-  height: 32px;
-  border-color: var(--color-accent);
-  background: rgba(77, 124, 254, 0.06);
-}
-
-.custom-cursor__trail {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 0;
-  pointer-events: none;
-  z-index: 99998;
-}
-
-.custom-cursor__trail-dot {
-  position: fixed;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  opacity: 0;
-  transition: opacity 0.1s ease;
-}
-
-@media (max-width: 768px) {
-  .custom-cursor,
-  .custom-cursor__trail {
-    display: none !important;
-  }
-}
-
-/* ============================================================
    ENHANCED: Global Lighting System
    ============================================================ */
 .global-lighting {
@@ -379,7 +302,7 @@ section[id] {
   z-index: 0;
   background: radial-gradient(
     circle 300px at var(--light-x, 50%) var(--light-y, 50%),
-    rgba(77, 124, 254, 0.03) 0%,
+    rgba(79, 125, 255, 0.03) 0%,
     transparent 100%
   );
   transition: background 0.1s ease;
@@ -414,18 +337,18 @@ section[id] {
 
 .bg-system__layer--particles {
   background-image:
-    radial-gradient(1px 1px at 10% 20%, rgba(77, 124, 254, 0.3) 0%, transparent 100%),
-    radial-gradient(1px 1px at 30% 65%, rgba(77, 124, 254, 0.2) 0%, transparent 100%),
-    radial-gradient(1.5px 1.5px at 50% 10%, rgba(139, 92, 246, 0.2) 0%, transparent 100%),
-    radial-gradient(1px 1px at 70% 40%, rgba(77, 124, 254, 0.25) 0%, transparent 100%),
-    radial-gradient(1px 1px at 85% 80%, rgba(77, 124, 254, 0.15) 0%, transparent 100%),
-    radial-gradient(1.5px 1.5px at 15% 85%, rgba(139, 92, 246, 0.2) 0%, transparent 100%),
-    radial-gradient(1px 1px at 45% 45%, rgba(77, 124, 254, 0.2) 0%, transparent 100%),
-    radial-gradient(1px 1px at 90% 15%, rgba(77, 124, 254, 0.15) 0%, transparent 100%),
-    radial-gradient(1px 1px at 60% 90%, rgba(77, 124, 254, 0.25) 0%, transparent 100%),
-    radial-gradient(1.5px 1.5px at 5% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 100%),
-    radial-gradient(1px 1px at 75% 5%, rgba(77, 124, 254, 0.2) 0%, transparent 100%),
-    radial-gradient(1px 1px at 35% 80%, rgba(77, 124, 254, 0.15) 0%, transparent 100%);
+    radial-gradient(1px 1px at 10% 20%, rgba(79, 125, 255, 0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 30% 65%, rgba(79, 125, 255, 0.2) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 50% 10%, rgba(126, 182, 255, 0.2) 0%, transparent 100%),
+    radial-gradient(1px 1px at 70% 40%, rgba(79, 125, 255, 0.25) 0%, transparent 100%),
+    radial-gradient(1px 1px at 85% 80%, rgba(79, 125, 255, 0.15) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 15% 85%, rgba(126, 182, 255, 0.2) 0%, transparent 100%),
+    radial-gradient(1px 1px at 45% 45%, rgba(79, 125, 255, 0.2) 0%, transparent 100%),
+    radial-gradient(1px 1px at 90% 15%, rgba(79, 125, 255, 0.15) 0%, transparent 100%),
+    radial-gradient(1px 1px at 60% 90%, rgba(79, 125, 255, 0.25) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 5% 50%, rgba(126, 182, 255, 0.15) 0%, transparent 100%),
+    radial-gradient(1px 1px at 75% 5%, rgba(79, 125, 255, 0.2) 0%, transparent 100%),
+    radial-gradient(1px 1px at 35% 80%, rgba(79, 125, 255, 0.15) 0%, transparent 100%);
   background-size: 100% 100%;
   animation: bgParticles 20s linear infinite;
 }
@@ -440,9 +363,9 @@ section[id] {
 
 .bg-system__layer--glow {
   background:
-    radial-gradient(ellipse 60% 40% at 20% 30%, rgba(77, 124, 254, 0.04) 0%, transparent 100%),
-    radial-gradient(ellipse 50% 60% at 80% 70%, rgba(139, 92, 246, 0.03) 0%, transparent 100%),
-    radial-gradient(ellipse 40% 50% at 50% 50%, rgba(77, 124, 254, 0.02) 0%, transparent 100%);
+    radial-gradient(ellipse 60% 40% at 20% 30%, rgba(79, 125, 255, 0.04) 0%, transparent 100%),
+    radial-gradient(ellipse 50% 60% at 80% 70%, rgba(126, 182, 255, 0.03) 0%, transparent 100%),
+    radial-gradient(ellipse 40% 50% at 50% 50%, rgba(79, 125, 255, 0.02) 0%, transparent 100%);
   animation: bgGlow 8s ease-in-out infinite alternate;
 }
 
@@ -456,18 +379,18 @@ section[id] {
     0deg,
     transparent,
     transparent 2px,
-    rgba(77, 124, 254, 0.006) 2px,
-    rgba(77, 124, 254, 0.006) 4px
+    rgba(79, 125, 255, 0.006) 2px,
+    rgba(79, 125, 255, 0.006) 4px
   );
 }
 
 .bg-system__layer--dots {
   background-image:
-    radial-gradient(2px 2px at 20% 30%, rgba(77, 124, 254, 0.15) 0%, transparent 100%),
-    radial-gradient(2px 2px at 60% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 100%),
-    radial-gradient(2px 2px at 80% 20%, rgba(77, 124, 254, 0.12) 0%, transparent 100%),
-    radial-gradient(2px 2px at 40% 70%, rgba(77, 124, 254, 0.1) 0%, transparent 100%),
-    radial-gradient(2px 2px at 90% 60%, rgba(139, 92, 246, 0.08) 0%, transparent 100%);
+    radial-gradient(2px 2px at 20% 30%, rgba(79, 125, 255, 0.15) 0%, transparent 100%),
+    radial-gradient(2px 2px at 60% 50%, rgba(126, 182, 255, 0.1) 0%, transparent 100%),
+    radial-gradient(2px 2px at 80% 20%, rgba(79, 125, 255, 0.12) 0%, transparent 100%),
+    radial-gradient(2px 2px at 40% 70%, rgba(79, 125, 255, 0.1) 0%, transparent 100%),
+    radial-gradient(2px 2px at 90% 60%, rgba(126, 182, 255, 0.08) 0%, transparent 100%);
   animation: bgDots 4s ease-in-out infinite alternate;
 }
 
@@ -479,11 +402,11 @@ section[id] {
 
 .bg-system__layer--gradient-mesh {
   background:
-    radial-gradient(ellipse 40% 30% at 15% 20%, rgba(77, 124, 254, 0.03) 0%, transparent 60%),
-    radial-gradient(ellipse 30% 40% at 85% 30%, rgba(139, 92, 246, 0.02) 0%, transparent 60%),
-    radial-gradient(ellipse 35% 25% at 60% 75%, rgba(77, 124, 254, 0.015) 0%, transparent 60%),
-    radial-gradient(ellipse 25% 35% at 30% 80%, rgba(139, 92, 246, 0.015) 0%, transparent 60%),
-    radial-gradient(ellipse 30% 30% at 75% 50%, rgba(77, 124, 254, 0.01) 0%, transparent 50%);
+    radial-gradient(ellipse 40% 30% at 15% 20%, rgba(79, 125, 255, 0.03) 0%, transparent 60%),
+    radial-gradient(ellipse 30% 40% at 85% 30%, rgba(126, 182, 255, 0.02) 0%, transparent 60%),
+    radial-gradient(ellipse 35% 25% at 60% 75%, rgba(79, 125, 255, 0.015) 0%, transparent 60%),
+    radial-gradient(ellipse 25% 35% at 30% 80%, rgba(126, 182, 255, 0.015) 0%, transparent 60%),
+    radial-gradient(ellipse 30% 30% at 75% 50%, rgba(79, 125, 255, 0.01) 0%, transparent 50%);
   animation: gradientMesh 15s ease-in-out infinite alternate;
   opacity: 0.6;
 }
@@ -502,8 +425,8 @@ section[id] {
 
 .bg-system__layer--circuits {
   background-image:
-    linear-gradient(90deg, transparent 49.9%, rgba(77, 124, 254, 0.015) 50%, transparent 50.1%),
-    linear-gradient(0deg, transparent 49.9%, rgba(77, 124, 254, 0.01) 50%, transparent 50.1%);
+    linear-gradient(90deg, transparent 49.9%, rgba(79, 125, 255, 0.015) 50%, transparent 50.1%),
+    linear-gradient(0deg, transparent 49.9%, rgba(79, 125, 255, 0.01) 50%, transparent 50.1%);
   background-size: 120px 120px;
   opacity: 0.3;
 }
@@ -551,9 +474,9 @@ section {
   border-radius: inherit;
   background: linear-gradient(
     135deg,
-    rgba(77, 124, 254, 0.05) 0%,
+    rgba(79, 125, 255, 0.05) 0%,
     transparent 50%,
-    rgba(139, 92, 246, 0.03) 100%
+    rgba(126, 182, 255, 0.03) 100%
   );
   pointer-events: none;
   opacity: 0;
@@ -578,7 +501,7 @@ section {
 
 .card-premium:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 40px rgba(77, 124, 254, 0.12);
+  box-shadow: 0 8px 40px rgba(79, 125, 255, 0.12);
 }
 
 .card-premium:hover::before {
@@ -609,9 +532,9 @@ section {
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(77, 124, 254, 0.2) 0%,
+    rgba(79, 125, 255, 0.2) 0%,
     transparent 50%,
-    rgba(139, 92, 246, 0.1) 100%
+    rgba(126, 182, 255, 0.1) 100%
   );
   opacity: 0;
   transition: opacity 0.3s var(--ease-out);
@@ -635,7 +558,7 @@ section {
 
 .btn-premium:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(77, 124, 254, 0.2);
+  box-shadow: 0 4px 20px rgba(79, 125, 255, 0.2);
 }
 
 .btn-premium:hover::before {
@@ -689,11 +612,11 @@ section {
     transparent 20deg,
     rgba(255, 255, 255, 0.01) 30deg,
     transparent 40deg,
-    rgba(77, 124, 254, 0.02) 50deg,
+    rgba(79, 125, 255, 0.02) 50deg,
     transparent 60deg,
     rgba(255, 255, 255, 0.01) 70deg,
     transparent 80deg,
-    rgba(139, 92, 246, 0.02) 90deg,
+    rgba(126, 182, 255, 0.02) 90deg,
     transparent 100deg
   );
   pointer-events: none;
@@ -720,11 +643,11 @@ section {
   background: conic-gradient(
     from 0deg at 50% 50%,
     transparent,
-    rgba(77, 124, 254, 0.15),
+    rgba(79, 125, 255, 0.15),
     transparent,
-    rgba(139, 92, 246, 0.1),
+    rgba(126, 182, 255, 0.1),
     transparent,
-    rgba(77, 124, 254, 0.15),
+    rgba(79, 125, 255, 0.15),
     transparent
   );
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -809,9 +732,9 @@ section {
   height: 2px;
   background: linear-gradient(90deg,
     transparent,
-    rgba(77, 124, 254, 0.4),
-    rgba(77, 124, 254, 0.6),
-    rgba(77, 124, 254, 0.4),
+    rgba(79, 125, 255, 0.4),
+    rgba(79, 125, 255, 0.6),
+    rgba(79, 125, 255, 0.4),
     transparent
   );
   filter: blur(2px);
@@ -900,7 +823,7 @@ section {
   width: 50%;
   height: 2px;
   background: linear-gradient(90deg,
-    rgba(77, 124, 254, 0.3),
+    rgba(79, 125, 255, 0.3),
     transparent
   );
   transform-origin: left center;

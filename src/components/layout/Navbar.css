@@ -174,7 +174,7 @@
   font-family: var(--font-display);
   font-size: var(--text-body-sm); font-weight: 600;
   color: var(--color-text);
-  border: 1px solid rgba(77, 124, 254, 0.25);
+  border: 1px solid rgba(79, 125, 255, 0.25);
   transition: all var(--duration-fast) var(--ease-out);
   width: 100%;
 }

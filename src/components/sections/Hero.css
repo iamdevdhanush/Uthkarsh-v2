@@ -57,7 +57,7 @@
   position: absolute; inset: 0;
   background: repeating-linear-gradient(
     0deg, transparent, transparent 3px,
-    rgba(77, 124, 254, 0.008) 3px, rgba(77, 124, 254, 0.008) 6px
+    rgba(79, 125, 255, 0.008) 3px, rgba(79, 125, 255, 0.008) 6px
   );
 }
 
@@ -66,7 +66,7 @@
   position: absolute;
   left: -10%; right: -10%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(77, 124, 254, 0.08), transparent);
+  background: linear-gradient(90deg, transparent, rgba(79, 125, 255, 0.08), transparent);
   animation: heroSweep 10s ease-in-out infinite;
   pointer-events: none;
 }
@@ -290,7 +290,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(77,124,254,0.3) 0%, transparent 50%, rgba(139,92,246,0.2) 100%);
+  background: linear-gradient(135deg, rgba(79, 125, 255,0.3) 0%, transparent 50%, rgba(126, 182, 255,0.2) 100%);
   opacity: 0;
   transition: opacity 0.3s var(--ease-out);
 }
@@ -309,7 +309,7 @@
 .hero__cta--primary:hover {
   background: var(--color-energy);
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(77, 124, 254, 0.3);
+  box-shadow: 0 8px 30px rgba(79, 125, 255, 0.3);
 }
 
 .hero__cta--primary:hover::before { opacity: 1; }
@@ -326,7 +326,7 @@
 
 .hero__cta--secondary {
   background: transparent; color: var(--color-text);
-  border: 1px solid rgba(77, 124, 254, 0.25);
+  border: 1px solid rgba(79, 125, 255, 0.25);
   backdrop-filter: blur(4px);
   position: relative;
   overflow: hidden;
@@ -380,7 +380,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(77,124,254,0.04) 0%, transparent 50%, rgba(139,92,246,0.03) 100%);
+  background: linear-gradient(135deg, rgba(79, 125, 255,0.04) 0%, transparent 50%, rgba(126, 182, 255,0.03) 100%);
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.4s var(--ease-out);
@@ -388,7 +388,7 @@
 
 .hero__data-grid:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 40px rgba(77, 124, 254, 0.08), 0 4px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 40px rgba(79, 125, 255, 0.08), 0 4px 30px rgba(0, 0, 0, 0.4);
 }
 
 .hero__data-grid:hover::before { opacity: 1; }
@@ -436,7 +436,7 @@
 
 .hero__time-display:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 40px rgba(77, 124, 254, 0.08), 0 4px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 40px rgba(79, 125, 255, 0.08), 0 4px 30px rgba(0, 0, 0, 0.4);
 }
 
 @media (min-width: 1280px) {

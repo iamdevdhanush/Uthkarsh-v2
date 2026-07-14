@@ -66,7 +66,7 @@
 .venue__maps-cta {
   display: inline-flex; align-items: center; gap: var(--space-2);
   height: 2.75rem; padding: 0 var(--space-5);
-  border: 1px solid rgba(77, 124, 254, 0.25);
+  border: 1px solid rgba(79, 125, 255, 0.25);
   color: var(--color-text);
   font-family: var(--font-display);
   font-size: var(--text-body-sm); font-weight: 600;
@@ -96,7 +96,7 @@
 
 .venue__map-frame:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(77, 124, 254, 0.06);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(79, 125, 255, 0.06);
 }
 
 .venue__map {
@@ -110,7 +110,7 @@
   right: 10%;
   width: 20px;
   height: 20px;
-  border: 2px solid rgba(77, 124, 254, 0.15);
+  border: 2px solid rgba(79, 125, 255, 0.15);
   border-radius: 50%;
   z-index: 2;
   animation: mapPulse 2s ease-out infinite;
@@ -137,7 +137,7 @@
 
 @keyframes gpsRipple {
   0% { box-shadow: 0 0 4px var(--color-accent); }
-  50% { box-shadow: 0 0 12px var(--color-accent), 0 0 20px rgba(77,124,254,0.2); }
+  50% { box-shadow: 0 0 12px var(--color-accent), 0 0 20px rgba(79, 125, 255,0.2); }
   100% { box-shadow: 0 0 4px var(--color-accent); }
 }
 

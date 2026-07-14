@@ -13,7 +13,7 @@
   left: 10%;
   right: 10%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(77,124,254,0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(79, 125, 255,0.2), transparent);
   animation: footerLine 3s ease-in-out infinite;
 }
 

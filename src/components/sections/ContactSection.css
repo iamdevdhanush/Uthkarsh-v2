@@ -125,14 +125,14 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(77,124,254,0.04) 0%, transparent 50%, rgba(139,92,246,0.03) 100%);
+  background: linear-gradient(135deg, rgba(79, 125, 255,0.04) 0%, transparent 50%, rgba(126, 182, 255,0.03) 100%);
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.4s var(--ease-out);
 }
 
 .contact__card:hover {
-  border-color: rgba(77, 124, 254, 0.3);
+  border-color: rgba(79, 125, 255, 0.3);
   box-shadow: 0 0 12px var(--glow-blue);
   transform: translateY(-3px);
 }
@@ -210,7 +210,7 @@
 }
 
 .contact__action--email {
-  border: 1px solid rgba(77, 124, 254, 0.25);
+  border: 1px solid rgba(79, 125, 255, 0.25);
   color: var(--color-text);
 }
 

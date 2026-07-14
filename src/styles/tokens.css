@@ -1,23 +1,23 @@
 :root {
-  --void: #070812;
-  --deep: #0D0E1A;
-  --charcoal: #121422;
-  --gunmetal: #121422;
-  --warm-black: #070812;
-  --paper: #F5F3FF;
+  --void: #050816;
+  --deep: #0B1020;
+  --charcoal: #0B1020;
+  --gunmetal: #0B1020;
+  --warm-black: #050816;
+  --paper: #FFFFFF;
   --pure: #FFFFFF;
-  --graphite: #A7A3B8;
-  --muted: #77738A;
-  --grid-grey: rgba(167, 163, 184, 0.16);
-  --line: rgba(167, 163, 184, 0.16);
+  --graphite: #A8B3CF;
+  --muted: #A8B3CF;
+  --grid-grey: rgba(168, 179, 207, 0.16);
+  --line: rgba(168, 179, 207, 0.16);
   
-  --electric-blue: #4D7CFE;
-  --violet-purple: #8B5CF6;
-  --soft-coral: #FF6B7A;
+  --electric-blue: #4F7DFF;
+  --violet-purple: #7EB6FF;
+  --soft-coral: #4F7DFF;
   
-  --glow-blue: rgba(77, 124, 254, 0.20);
-  --glow-purple: rgba(139, 92, 246, 0.18);
-  --glow-coral: rgba(255, 107, 122, 0.14);
+  --glow-blue: rgba(79, 125, 255, 0.20);
+  --glow-purple: rgba(126, 182, 255, 0.18);
+  --glow-coral: rgba(79, 125, 255, 0.14);
 
   --color-bg: var(--void);
   --color-surface: var(--deep);
@@ -32,12 +32,12 @@
   --color-energy: var(--violet-purple);
   --color-gold: var(--violet-purple);
   --color-gold-muted: var(--muted);
-  --color-amber: var(--soft-coral);
-  --color-gold-subtle: rgba(139, 92, 246, 0.12);
+  --color-amber: var(--electric-blue);
+  --color-gold-subtle: rgba(126, 182, 255, 0.12);
   --color-border: var(--grid-grey);
-  --color-overlay: rgba(7, 8, 18, 0.92);
+  --color-overlay: rgba(5, 8, 22, 0.92);
   --color-light-section: var(--paper);
-  --color-light-text: #070812;
+  --color-light-text: #050816;
 
   --font-display: 'DM Sans', 'Inter', system-ui, -apple-system, sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;

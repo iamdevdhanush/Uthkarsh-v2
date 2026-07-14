@@ -23,8 +23,8 @@
 }
 
 .event-brief__section:hover {
-  border-color: rgba(77, 124, 254, 0.08);
-  box-shadow: 0 0 20px rgba(77, 124, 254, 0.02);
+  border-color: rgba(79, 125, 255, 0.08);
+  box-shadow: 0 0 20px rgba(79, 125, 255, 0.02);
 }
 
 .event-brief__section-title {
@@ -285,14 +285,14 @@
 /* --- First Prize (Gold / Champion) --- */
 
 .event-brief__prize-card--first {
-  border-color: rgba(77, 124, 254, 0.25);
-  background: rgba(77, 124, 254, 0.03);
+  border-color: rgba(79, 125, 255, 0.25);
+  background: rgba(79, 125, 255, 0.03);
   box-shadow: 0 0 15px var(--glow-blue);
 }
 
 .event-brief__prize-card--first:hover {
   border-color: var(--electric-blue);
-  background: rgba(77, 124, 254, 0.06);
+  background: rgba(79, 125, 255, 0.06);
   box-shadow: 0 0 25px var(--glow-blue);
   transform: translateY(-2px);
 }
@@ -345,13 +345,13 @@
 /* --- Second Prize --- */
 
 .event-brief__prize-card--second {
-  border-color: rgba(139, 92, 246, 0.2);
-  background: rgba(139, 92, 246, 0.02);
+  border-color: rgba(126, 182, 255, 0.2);
+  background: rgba(126, 182, 255, 0.02);
 }
 
 .event-brief__prize-card--second:hover {
   border-color: var(--violet-purple);
-  background: rgba(139, 92, 246, 0.05);
+  background: rgba(126, 182, 255, 0.05);
   box-shadow: 0 0 20px var(--glow-purple);
   transform: translateY(-2px);
 }
@@ -359,13 +359,13 @@
 /* --- Bonus / Perks card --- */
 
 .event-brief__prize-card--bonus {
-  border-color: rgba(139, 92, 246, 0.16);
-  background: rgba(139, 92, 246, 0.02);
+  border-color: rgba(126, 182, 255, 0.16);
+  background: rgba(126, 182, 255, 0.02);
 }
 
 .event-brief__prize-card--bonus:hover {
   border-color: var(--violet-purple);
-  background: rgba(139, 92, 246, 0.05);
+  background: rgba(126, 182, 255, 0.05);
   box-shadow: 0 0 20px var(--glow-purple);
   transform: translateY(-2px);
 }
@@ -527,7 +527,7 @@
 }
 
 .protocol-card--open {
-  background: rgba(77, 124, 254, 0.03);
+  background: rgba(79, 125, 255, 0.03);
 }
 
 .protocol-card__trigger {

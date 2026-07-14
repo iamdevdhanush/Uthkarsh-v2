@@ -22,7 +22,7 @@
   left: 50%;
   width: 60vw;
   height: 60vw;
-  background: radial-gradient(circle, rgba(77,124,254,0.06) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(79, 125, 255,0.06) 0%, transparent 70%);
   transform: translate(-50%, -50%);
   pointer-events: none;
   animation: ctaSpotlight 4s ease-in-out infinite alternate;
@@ -128,7 +128,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(77,124,254,0.3) 0%, transparent 50%, rgba(139,92,246,0.2) 100%);
+  background: linear-gradient(135deg, rgba(79, 125, 255,0.3) 0%, transparent 50%, rgba(126, 182, 255,0.2) 100%);
   opacity: 0;
   transition: opacity 0.3s var(--ease-out);
 }
@@ -147,7 +147,7 @@
 .final-cta__button:hover {
   background: var(--color-energy);
   transform: translateY(-3px);
-  box-shadow: 0 12px 40px rgba(77, 124, 254, 0.3);
+  box-shadow: 0 12px 40px rgba(79, 125, 255, 0.3);
 }
 
 .final-cta__button:hover::before { opacity: 1; }

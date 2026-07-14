@@ -4,7 +4,6 @@ import { Home } from './pages/Home'
 import { Register } from './pages/Register'
 import { ContactUs } from './pages/ContactUs'
 import { ThreeGlobe } from './components/effects/ThreeGlobe'
-import { CustomCursor } from './components/effects/CustomCursor'
 import { BackgroundSystem } from './components/effects/BackgroundSystem'
 import { GlobalLighting } from './components/effects/GlobalLighting'
 
@@ -14,7 +13,6 @@ function App() {
       <BackgroundSystem />
       <GlobalLighting />
       <ThreeGlobe />
-      <CustomCursor />
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />

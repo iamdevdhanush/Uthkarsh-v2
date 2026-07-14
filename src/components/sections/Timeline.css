@@ -276,7 +276,7 @@
 
 .circuit-card:hover {
   transform: translateY(-4px) !important;
-  box-shadow: 0 8px 40px rgba(77, 124, 254, 0.08), 0 4px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 40px rgba(79, 125, 255, 0.08), 0 4px 30px rgba(0, 0, 0, 0.4);
 }
 
 .circuit-card::before {
@@ -382,7 +382,7 @@
 .circuit-card--completed {
   opacity: 0.85;
   transform: translateY(0);
-  border-color: rgba(139, 92, 246, 0.3);
+  border-color: rgba(126, 182, 255, 0.3);
 }
 
 .circuit-card--completed .circuit-card__corner {
@@ -539,7 +539,7 @@
   }
   
   .circuit-mobile-step--completed .circuit-mobile-step__card {
-    border-color: rgba(139, 92, 246, 0.3);
+    border-color: rgba(126, 182, 255, 0.3);
   }
   
   /* Start and Finish visual highlights on mobile */
