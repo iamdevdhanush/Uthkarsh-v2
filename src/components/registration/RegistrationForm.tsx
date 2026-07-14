@@ -1,4 +1,4 @@
-﻿import { useState } from 'react'
+﻿import { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { Link } from 'react-router-dom'
 import { StepIndicator } from './StepIndicator'
@@ -35,6 +35,7 @@ export function RegistrationForm() {
   const [loading, setLoading] = useState(false)
   const [response, setResponse] = useState<RegistrationResponse | null>(null)
   const [errorBanner, setErrorBanner] = useState('')
+  const submittingRef = useRef(false)
 
   const handleNext = () => {
     setErrors({})
@@ -55,6 +56,11 @@ export function RegistrationForm() {
       } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.leader.email)) {
         fieldErrors.leaderEmail = 'Enter a valid email address.'
       }
+      if (!data.leader.phone?.trim()) {
+        fieldErrors.leaderPhone = 'Mobile number is required.'
+      } else if (!/^[6-9]\d{9}$/.test(data.leader.phone.replace(/[\s-]/g, '').replace(/^(\+91|91)/, ''))) {
+        fieldErrors.leaderPhone = 'Enter a valid 10-digit mobile number.'
+      }
       if (!data.leader.course.trim()) fieldErrors.leaderCourse = 'Course is required.'
       if (!data.leader.semester.trim()) fieldErrors.leaderSemester = 'Semester is required.'
     }
@@ -74,6 +80,7 @@ export function RegistrationForm() {
   }
 
   const handleSubmit = async () => {
+    if (submittingRef.current) return
     setErrors({})
     setErrorBanner('')
     const validationErrors = validateRegistration(data)
@@ -87,6 +94,7 @@ export function RegistrationForm() {
       return
     }
 
+    submittingRef.current = true
     setLoading(true)
     try {
       const result = await submitRegistration(data)
@@ -98,6 +106,7 @@ export function RegistrationForm() {
       setErrorBanner('Something went wrong. Please try again.')
     } finally {
       setLoading(false)
+      submittingRef.current = false
     }
   }
 
@@ -197,7 +206,7 @@ export function RegistrationForm() {
             onClick={handleSubmit}
             disabled={loading}
           >
-            {loading ? 'Submitting...' : 'Submit Registration'}
+            {loading ? 'REGISTERING...' : 'Submit Registration'}
           </button>
         )}
       </div>

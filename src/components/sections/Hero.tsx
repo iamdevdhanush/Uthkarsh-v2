@@ -226,8 +226,6 @@ export function Hero() {
           <span className="hero__bottom-coord">N13°43' E75°37'</span>
           <span className="hero__bottom-divider" />
           <span className="hero__bottom-text">PESIAMS // SHIVAMOGGA</span>
-          <span className="hero__bottom-divider" />
-          <span className="hero__bottom-text">{eventConfig.overallStart} \u2013 {eventConfig.overallEnd}</span>
         </div>
       </div>
     </section>

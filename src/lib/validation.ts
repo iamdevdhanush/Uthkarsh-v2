@@ -120,6 +120,12 @@ export function validateRegistration(data: RegistrationData): ValidationError[] 
     ...validateParticipant(data.leader, 'leader'),
   ]
 
+  if (!data.leader.phone?.trim()) {
+    errors.push({ field: 'leaderPhone', message: 'Mobile number is required.' })
+  } else if (!validatePhone(data.leader.phone)) {
+    errors.push({ field: 'leaderPhone', message: 'Enter a valid 10-digit mobile number.' })
+  }
+
   data.members.forEach((member, i) => {
     errors.push(...validateParticipant(member, `member${i + 2}`))
   })

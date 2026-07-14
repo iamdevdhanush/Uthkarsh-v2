@@ -319,7 +319,7 @@ function handlePost_(e: GoogleAppsScript.Events.DoPost): GoogleAppsScript.Conten
   // ── Update cache ──
   try { updateCapacityCache_(); } catch (e) { /* non-critical */ }
 
-  logger.log(`Registration created: ${registrationId}`);
+  console.log(`Registration created: ${registrationId}`);
 
   return respond_({
     success: true,

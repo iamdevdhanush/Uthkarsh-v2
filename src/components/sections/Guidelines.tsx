@@ -1,5 +1,5 @@
-﻿import { useState, useEffect, useRef } from 'react'
-import { motion } from 'motion/react'
+﻿import { useState, useEffect, useRef, useCallback } from 'react'
+import { motion, AnimatePresence } from 'motion/react'
 import { Accordion } from '../ui/Accordion'
 import { rules as rulesData } from '../../data/rules'
 import { faqItems } from '../../data/faq'
@@ -32,27 +32,20 @@ function AnimatedTotal({ inView, reduced }: { inView: boolean; reduced: boolean 
   return <>{display}</>
 }
 
+const ruleSummaries: Record<string, string> = {
+  'Eligibility': 'Open to all inter-college students with valid institutional ID.',
+  'Team Composition': `${eventConfig.minTeamSize}–${eventConfig.maxTeamSize} participants per team.`,
+  'Development Rules': 'All development within designated hackathon hours only.',
+  'AI Tool Policy': 'AI tool usage subject to event-day guidelines.',
+  'Submission Requirements': 'Working prototype must be submitted before the hard deadline.',
+  'Judging': 'Evaluated by a panel of judges. Decision is final.',
+}
+
 export function Guidelines() {
   const reducedMotion = useReducedMotion()
   const [brochureError, setBrochureError] = useState(false)
-
-  const accordionItems = rulesData.map((rule) => ({
-    id: rule.category.toLowerCase().replace(/\s+/g, '-'),
-    title: rule.category,
-    content: (
-      <ul className="event-brief__list">
-        {rule.items.map((item, i) => (
-          <li key={i} className="event-brief__item">{item}</li>
-        ))}
-      </ul>
-    ),
-  }))
-
-  const faqAccordionItems = faqItems.map((faq) => ({
-    id: faq.question.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+$/, ''),
-    title: faq.question,
-    content: faq.answer,
-  }))
+  const [openCard, setOpenCard] = useState<string | null>(null)
+  const [faqShowAll, setFaqShowAll] = useState(false)
 
   const prizesInViewRef = useRef<HTMLDivElement>(null)
   const [prizesInView, setPrizesInView] = useState(false)
@@ -82,6 +75,19 @@ export function Guidelines() {
       transition: cardTransition(delay),
     }
   }
+
+  const toggleCard = useCallback((id: string) => {
+    setOpenCard(prev => prev === id ? null : id)
+  }, [])
+
+  const handleCardKeyDown = useCallback((e: React.KeyboardEvent, id: string) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault()
+      toggleCard(id)
+    }
+  }, [toggleCard])
+
+  const displayedFaqs = faqShowAll ? faqItems : faqItems.slice(0, 5)
 
   const sections = [
     {
@@ -236,13 +242,102 @@ export function Guidelines() {
     },
     {
       id: 'rules',
-      title: '03 // PROTOCOL RULES',
-      content: <Accordion items={accordionItems} />,
+      title: '03 // SYSTEM DIRECTIVES',
+      content: (
+        <div className="protocol-grid">
+          {rulesData.map((rule, i) => {
+            const cardId = `rule-${rule.category.toLowerCase().replace(/\s+/g, '-')}`
+            const isOpen = openCard === cardId
+            return (
+              <div
+                key={cardId}
+                className={`protocol-card${isOpen ? ' protocol-card--open' : ''}`}
+              >
+                <button
+                  className="protocol-card__trigger"
+                  onClick={() => toggleCard(cardId)}
+                  onKeyDown={(e) => handleCardKeyDown(e, cardId)}
+                  aria-expanded={isOpen}
+                  aria-controls={`protocol-content-${cardId}`}
+                >
+                  <div className="protocol-card__top">
+                    <span className="protocol-card__num">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <span className={`protocol-card__icon${isOpen ? ' protocol-card__icon--open' : ''}`} aria-hidden="true">
+                      <span className="protocol-card__icon-bar protocol-card__icon-bar--h" />
+                      <span className={`protocol-card__icon-bar protocol-card__icon-bar--v${isOpen ? ' protocol-card__icon-bar--hide' : ''}`} />
+                    </span>
+                  </div>
+                  <span className="protocol-card__title">{rule.category}</span>
+                  <span className="protocol-card__summary">{ruleSummaries[rule.category]}</span>
+                </button>
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      id={`protocol-content-${cardId}`}
+                      key="content"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                      className="protocol-card__content"
+                      role="region"
+                    >
+                      <div className="protocol-card__body">
+                        <ul className="event-brief__list">
+                          {rule.items.map((item, j) => (
+                            <li key={j} className="event-brief__item">{item}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            )
+          })}
+        </div>
+      ),
     },
     {
       id: 'faq',
       title: '04 // FREQUENTLY ASKED QUESTIONS',
-      content: <Accordion items={faqAccordionItems} />,
+      content: (
+        <div>
+          <div className="faq-accordion">
+            {displayedFaqs.map((faq) => {
+              const faqId = faq.question.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+$/, '')
+              return (
+                <Accordion
+                  key={faqId}
+                  items={[{
+                    id: faqId,
+                    title: faq.question,
+                    content: faq.answer,
+                  }]}
+                />
+              )
+            })}
+          </div>
+          {faqItems.length > 5 && (
+            <div className="faq-toggle">
+              <button
+                className="faq-toggle__btn"
+                onClick={() => setFaqShowAll(prev => !prev)}
+                aria-expanded={faqShowAll}
+              >
+                <span className="faq-toggle__text">
+                  {faqShowAll ? 'COLLAPSE FAQs' : 'VIEW ALL FAQs'}
+                </span>
+                <span className={`faq-toggle__arrow${faqShowAll ? ' faq-toggle__arrow--up' : ''}`}>
+                  {'\u2193'}
+                </span>
+              </button>
+            </div>
+          )}
+        </div>
+      ),
     },
   ]
 

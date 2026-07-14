@@ -24,11 +24,14 @@ export async function submitRegistration(data: RegistrationData): Promise<Regist
   if (mode === 'mock') {
     await new Promise((r) => setTimeout(r, 1500))
 
-    if (!data.consents.consent) {
-      return {
-        success: false,
-        message: 'All consent fields are required.',
-        errorCode: 'VALIDATION_ERROR',
+    const requiredConsents = ['consent', 'consentInfoAccuracy', 'consentRules', 'consentNoGuarantee', 'consentDataProcessing'] as const
+    for (const key of requiredConsents) {
+      if (!data.consents[key]) {
+        return {
+          success: false,
+          message: 'All consent fields are required.',
+          errorCode: 'VALIDATION_ERROR',
+        }
       }
     }
 
@@ -41,6 +44,8 @@ export async function submitRegistration(data: RegistrationData): Promise<Regist
   }
 
   try {
+    console.log('[Registration] Starting production submission')
+
     const formData = new FormData()
     formData.append('teamName', data.team.teamName)
     formData.append('collegeName', data.team.collegeName)
@@ -59,13 +64,18 @@ export async function submitRegistration(data: RegistrationData): Promise<Regist
       formData.append('screenshot', data.payment.screenshot)
     }
 
+    console.log('[Registration] Sending POST to:', REGISTRATION_API_URL)
+
     const response = await fetch(REGISTRATION_API_URL!, {
       method: 'POST',
       body: formData,
     })
 
+    console.log('[Registration] HTTP status:', response.status)
+
     if (!response.ok) {
       const errorData = await response.json().catch(() => null)
+      console.log('[Registration] Error response:', errorData)
       return {
         success: false,
         message: errorData?.message || 'Registration failed. Please try again.',
@@ -73,8 +83,11 @@ export async function submitRegistration(data: RegistrationData): Promise<Regist
       }
     }
 
-    return await response.json()
-  } catch {
+    const result = await response.json()
+    console.log('[Registration] Success response:', result)
+    return result
+  } catch (err) {
+    console.error('[Registration] Network error:', err)
     return {
       success: false,
       message: 'Registration service is temporarily unavailable. Your registration was not submitted. Please try again later.',
