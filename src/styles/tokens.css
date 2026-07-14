@@ -108,6 +108,12 @@
   }
 }
 
+@media (min-width: 1600px) {
+  :root {
+    --max-width-content: 84rem;
+  }
+}
+
 .light-section {
   --color-bg: var(--color-light-section);
   --color-text: var(--color-light-text);

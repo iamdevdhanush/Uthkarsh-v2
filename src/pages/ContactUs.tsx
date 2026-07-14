@@ -253,7 +253,7 @@ export function ContactUs() {
             </div>
             <div className="contact-page__quick-item">
               <span className="contact-page__quick-q">How many participants are allowed per team?</span>
-              <span className="contact-page__quick-a">{eventConfig.minTeamSize}\u2013{eventConfig.maxTeamSize} participants per team</span>
+              <span className="contact-page__quick-a">{eventConfig.minTeamSize}–{eventConfig.maxTeamSize} participants per team</span>
             </div>
             <div className="contact-page__quick-item">
               <span className="contact-page__quick-q">What is the registration fee?</span>

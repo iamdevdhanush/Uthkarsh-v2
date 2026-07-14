@@ -38,23 +38,19 @@ export function Institution() {
                   onLoadedData={() => setVideoLoaded(true)}
                   onError={() => setVideoError(true)}
                 />
-              ) : null}
-
-              {!imageError && (videoError || !videoLoaded) ? (
+              ) : !imageError ? (
                 <img
                   className="institution__image"
                   src={eventConfig.media.campusImage}
                   alt={`${eventConfig.institutionFull} campus`}
                   onError={() => setImageError(true)}
                 />
-              ) : null}
-
-              {videoError && imageError ? (
+              ) : (
                 <div className="institution__placeholder">
                   <span>{eventConfig.institutionShort}</span>
                   <span>Main Campus</span>
                 </div>
-              ) : null}
+              )}
 
               <div className="institution__frame-bottom">
                 <span>{eventConfig.institutionShort} · Main Campus</span>

@@ -77,7 +77,7 @@ export function About() {
               transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             >
               UTKARSH 26 is a six-hour inter-college hackathon where up to {eventConfig.maximumTeams} teams
-              of 2\u20134 participants build working solutions against the clock.
+              of 2–4 participants build working solutions against the clock.
             </motion.p>
             <motion.p
               className="about__text"

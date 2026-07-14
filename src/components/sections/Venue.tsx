@@ -59,7 +59,7 @@ export function Venue() {
             <div className="venue__map-frame">
               <div className="venue__map-top">
                 <span className="status-dot status-dot--active" />
-                <span className="venue__map-coord">N13\u00b043' E75\u00b037'</span>
+                <span className="venue__map-coord">N13°43' E75°37'</span>
                 <span className="venue__map-sep">|</span>
                 <span className="venue__map-label">CAMPUS // PESIAMS</span>
               </div>

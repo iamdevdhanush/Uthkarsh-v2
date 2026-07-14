@@ -7,7 +7,7 @@ import './Hero.css'
 
 const metaItems = [
   { label: 'HOST', value: eventConfig.institutionShort },
-  { label: 'DEPARTMENT', value: eventConfig.department },
+  { label: 'ORGANISED BY', value: eventConfig.department },
   { label: 'LOCATION', value: eventConfig.location },
 ] as const
 

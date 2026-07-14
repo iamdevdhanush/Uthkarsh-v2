@@ -43,8 +43,7 @@
   display: block;
 }
 
-.institution__video { opacity: 0; transition: opacity 0.8s ease; }
-.institution__video--ready { opacity: 1; }
+.institution__video { }
 
 .institution__placeholder {
   aspect-ratio: 16 / 9;

@@ -488,6 +488,118 @@
   }
 }
 
+/* ==============================
+   PROTOCOL CARDS (System Directives)
+   ============================== */
+
+.protocol-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.protocol-card {
+  background: var(--warm-black);
+  transition: background var(--duration-fast) var(--ease-out);
+}
+
+.protocol-card:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.protocol-card--open {
+  background: rgba(255, 77, 0, 0.03);
+}
+
+.protocol-card__trigger {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: var(--space-4);
+  font-family: inherit;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  gap: var(--space-2);
+}
+
+.protocol-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.protocol-card__num {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-mono);
+  color: var(--color-accent);
+}
+
+.protocol-card__icon {
+  position: relative;
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.protocol-card__icon-bar {
+  position: absolute;
+  background: var(--color-text-muted);
+  transition: all var(--duration-fast) var(--ease-out);
+  border-radius: 1px;
+}
+
+.protocol-card__icon-bar--h {
+  width: 100%;
+  height: 2px;
+}
+
+.protocol-card__icon-bar--v {
+  width: 2px;
+  height: 100%;
+}
+
+.protocol-card__icon-bar--hide {
+  transform: rotate(90deg);
+  opacity: 0;
+}
+
+.protocol-card--open .protocol-card__icon-bar {
+  background: var(--color-accent);
+}
+
+.protocol-card__title {
+  font-family: var(--font-display);
+  font-size: var(--text-body-md);
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: var(--tracking-tight);
+}
+
+.protocol-card__summary {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  color: var(--color-text-secondary);
+  letter-spacing: var(--tracking-mono);
+  line-height: var(--leading-snug);
+}
+
+.protocol-card__content {
+  overflow: hidden;
+}
+
+.protocol-card__body {
+  padding: 0 var(--space-4) var(--space-4);
+}
+
 /* List */
 .event-brief__list {
   display: flex; flex-direction: column; gap: var(--space-2);
