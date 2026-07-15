@@ -101,30 +101,21 @@
 }
 
 .hero__layout {
-  position: relative; z-index: 1;
-  display: grid; gap: var(--space-8);
+  position: relative; z-index: 3;
+  display: flex;
+  flex-direction: column;
   flex: 1;
-  align-content: center;
+  justify-content: center;
   padding-block: var(--space-8);
 }
 
 @media (min-width: 768px) {
-  .hero__layout {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-8);
-    padding-block: var(--space-16);
-  }
-}
-
-@media (min-width: 1024px) {
-  .hero__layout { grid-template-columns: 1.1fr 0.9fr; gap: var(--space-12); }
+  .hero__layout { padding-block: var(--space-16); }
 }
 
 @media (max-width: 767px) {
   .hero__layout {
     flex: none;
-    display: flex;
-    flex-direction: column;
     gap: var(--space-5);
     padding-block: var(--space-4);
   }
@@ -361,28 +352,61 @@
   font-family: var(--font-mono); font-size: var(--text-body-sm);
 }
 
-/* Spline scene (right panel) */
-.hero__side {
-  position: relative;
-  display: flex; align-items: center; justify-content: center;
-  min-height: 400px;
-}
-
-@media (max-width: 767px) {
-  .hero__side {
-    display: flex;
-    min-height: clamp(300px, 55vh, 480px);
-    width: 100%;
-    order: 10; /* pushes visual below all hero content on mobile */
-  }
-}
-
-@media (min-width: 768px) {
-  .hero__side { min-height: 500px; }
+/* Spline 3D background — cinematic positioning behind hero content */
+.hero__spline-container {
+  position: absolute;
+  top: 0; right: 0;
+  width: 55%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
 }
 
 @media (min-width: 1280px) {
-  .hero__side { min-height: 600px; }
+  .hero__spline-container { width: 50%; }
+}
+
+@media (max-width: 767px) {
+  .hero__spline-container {
+    width: 100%;
+    height: 65%;
+    top: 0; right: 0;
+    opacity: 0.3;
+  }
+}
+
+/* Gradient overlay that blends the Spline scene into the dark hero background.
+   Left edge: pure dark so text stays readable over the robot area.
+   The multi-stop gradient handles the Spline scene's light/white background,
+   smoothly transitioning from solid dark (left) to clear (right).
+   On mobile the gradient runs top→bottom so the lower hero content is readable. */
+.hero__spline-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  background: linear-gradient(
+    to right,
+    var(--void) 0%,
+    var(--void) 18%,
+    rgba(5,5,5,0.75) 30%,
+    rgba(5,5,5,0.3) 55%,
+    transparent 80%
+  );
+}
+
+@media (max-width: 767px) {
+  .hero__spline-overlay {
+    background: linear-gradient(
+      to bottom,
+      transparent 20%,
+      rgba(5,5,5,0.5) 50%,
+      var(--void) 100%
+    );
+  }
 }
 
 .hero__spline {
@@ -584,7 +608,6 @@
   .hero__title { margin-bottom: var(--space-2); }
   .hero__meta { margin-bottom: var(--space-3); }
   .hero__actions { flex-direction: row; }
-  .hero__side { gap: var(--space-3); }
 }
 
 /* Tablet (768px - 1023px) */
@@ -592,15 +615,9 @@
   .hero__layout { gap: var(--space-8); padding-block: var(--space-10); }
   .hero__title-event { font-size: clamp(2.5rem, 6vw, 4rem); }
   .hero__title-num { font-size: clamp(4rem, 10vw, 7rem); }
-  .hero__side { gap: var(--space-4); }
 }
 
 /* Tablet portrait optimization */
 @media (min-width: 768px) and (max-width: 1023px) and (orientation: portrait) {
-  .hero__layout {
-    grid-template-columns: 1fr;
-    gap: var(--space-8);
-  }
   .hero__main { margin-bottom: 0; }
-  .hero__side { display: none; }
 }

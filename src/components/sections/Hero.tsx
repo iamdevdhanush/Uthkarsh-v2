@@ -32,8 +32,6 @@ function clipReveal(delay: number, reduced: boolean, dir: 'bottom' | 'left' = 'b
   }
 }
 
-
-
 export function Hero() {
   const reducedMotion = useReducedMotion()
   const [glitchActive, setGlitchActive] = useState(false)
@@ -77,6 +75,12 @@ export function Hero() {
         <div className="hero__corner-tr" />
         <div className="hero__corner-bl" />
         <div className="hero__corner-br" />
+      </div>
+
+      {/* Spline 3D robot — cinematic background */}
+      <div className="hero__spline-container" aria-hidden="true">
+        <HeroSplineScene reducedMotion={reducedMotion} />
+        <div className="hero__spline-overlay" />
       </div>
 
       <div className="container">
@@ -167,11 +171,6 @@ export function Hero() {
                 <span className="hero__metrics-label">TEAM SIZE</span>
               </div>
             </motion.div>
-          </div>
-
-          {/* Right panel — Spline 3D robot scene (iframe-isolated) */}
-          <div className="hero__side">
-            <HeroSplineScene reducedMotion={reducedMotion} />
           </div>
         </div>
 
