@@ -1,9 +1,11 @@
-﻿import { useState, useEffect, useRef, useCallback } from 'react'
+﻿import { useState, useEffect, useRef, useCallback, lazy, Suspense } from 'react'
 import { motion } from 'motion/react'
 import { Link } from 'react-router-dom'
 import { eventConfig } from '../../data/eventConfig'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import './Hero.css'
+
+const HeroSplineScene = lazy(() => import('./HeroSplineScene').then(m => ({ default: m.HeroSplineScene })))
 
 const metaItems = [
   { label: 'HOST', value: eventConfig.institutionShort },
@@ -31,35 +33,10 @@ function clipReveal(delay: number, reduced: boolean, dir: 'bottom' | 'left' = 'b
   }
 }
 
-const COUNTDOWN_TARGET = new Date('2026-09-01T09:00:00+05:30')
-const COUNTDOWN_DATE = '01 SEPTEMBER 2026'
-const COUNTDOWN_TIME = '09:00 AM IST'
 
-function useCountdown() {
-  const calc = useCallback(() => {
-    const diff = COUNTDOWN_TARGET.getTime() - Date.now()
-    if (diff <= 0) return { d: 0, h: 0, m: 0, s: 0, over: true }
-    return {
-      d: Math.floor(diff / 86400000),
-      h: Math.floor((diff % 86400000) / 3600000),
-      m: Math.floor((diff % 3600000) / 60000),
-      s: Math.floor((diff % 60000) / 1000),
-      over: false,
-    }
-  }, [])
-  const [r, setR] = useState(calc)
-  useEffect(() => {
-    const id = setInterval(() => setR(calc()), 1000)
-    return () => clearInterval(id)
-  }, [calc])
-  return r
-}
-
-const pad = (n: number) => String(n).padStart(2, '0')
 
 export function Hero() {
   const reducedMotion = useReducedMotion()
-  const cd = useCountdown()
   const [glitchActive, setGlitchActive] = useState(false)
   const heroRef = useRef<HTMLDivElement>(null)
   const [mouseX, setMouseX] = useState(0)
@@ -165,87 +142,39 @@ export function Hero() {
                 <span className="hero__cta-arrow">{'\u2193'}</span>
               </motion.a>
             </motion.div>
+
+            {/* Compact metrics strip */}
+            <motion.div
+              className="hero__metrics"
+              {...slideUp(1.8, reducedMotion)}
+            >
+              <div className="hero__metrics-item">
+                <span className="hero__metrics-num">{eventConfig.maximumTeams}</span>
+                <span className="hero__metrics-label">TEAMS</span>
+              </div>
+              <span className="hero__metrics-dot" />
+              <div className="hero__metrics-item">
+                <span className="hero__metrics-num">{eventConfig.maxParticipants}</span>
+                <span className="hero__metrics-label">MINDS</span>
+              </div>
+              <span className="hero__metrics-dot" />
+              <div className="hero__metrics-item">
+                <span className="hero__metrics-num">06:00</span>
+                <span className="hero__metrics-label">DURATION</span>
+              </div>
+              <span className="hero__metrics-dot" />
+              <div className="hero__metrics-item">
+                <span className="hero__metrics-num">{eventConfig.minTeamSize}–{eventConfig.maxTeamSize}</span>
+                <span className="hero__metrics-label">TEAM SIZE</span>
+              </div>
+            </motion.div>
           </div>
 
-          {/* Side panel — parallel timeline */}
+          {/* Right panel — Spline 3D robot scene */}
           <div className="hero__side">
-            <motion.div
-              className="hero__data-grid"
-              initial={reducedMotion ? { opacity: 1 } : { opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <div className="hero__data-item">
-                <span className="hero__data-num">{eventConfig.maximumTeams}</span>
-                <span className="hero__data-label">TEAMS</span>
-              </div>
-              <div className="hero__data-divider" />
-              <div className="hero__data-item">
-                <span className="hero__data-num">{eventConfig.maxParticipants}</span>
-                <span className="hero__data-label">MINDS</span>
-              </div>
-              <div className="hero__data-divider" />
-              <div className="hero__data-item">
-                <span className="hero__data-num">06:00</span>
-                <span className="hero__data-label">DURATION</span>
-              </div>
-              <div className="hero__data-divider" />
-              <div className="hero__data-item">
-                <span className="hero__data-num">{eventConfig.minTeamSize}–{eventConfig.maxTeamSize}</span>
-                <span className="hero__data-label">TEAM SIZE</span>
-              </div>
-            </motion.div>
-
-            {/* COUNTDOWN TIMER */}
-            <motion.div
-              className="hero__countdown"
-              role="timer"
-              aria-label="Countdown to UTKARSH 26"
-              initial={reducedMotion ? { opacity: 1 } : { opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <div className="hero__countdown-header">
-                <span className="hero__countdown-tag">COUNTDOWN TO UTKARSH 26</span>
-              </div>
-              {cd.over ? (
-                <div className="hero__countdown-live">
-                  <span className="hero__countdown-live-tag">EVENT HAS STARTED</span>
-                  <span className="hero__countdown-live-title">Welcome to UTKARSH 26</span>
-                </div>
-              ) : (
-                <>
-                  <div className="hero__countdown-days">
-                    <span className="hero__countdown-days-num">{pad(cd.d)}</span>
-                    <span className="hero__countdown-days-label">DAYS</span>
-                  </div>
-                  <div className="hero__countdown-clock">
-                    <div className="hero__countdown-clock-row">
-                      <div className="hero__countdown-clock-unit">
-                        <span className="hero__countdown-digit">{pad(cd.h)}</span>
-                        <span className="hero__countdown-clock-label">HRS</span>
-                      </div>
-                      <span className="hero__countdown-sep" aria-hidden="true">:</span>
-                      <div className="hero__countdown-clock-unit">
-                        <span className="hero__countdown-digit">{pad(cd.m)}</span>
-                        <span className="hero__countdown-clock-label">MIN</span>
-                      </div>
-                      <span className="hero__countdown-sep" aria-hidden="true">:</span>
-                      <div className="hero__countdown-clock-unit">
-                        <span className="hero__countdown-digit">{pad(cd.s)}</span>
-                        <span className="hero__countdown-clock-label">SEC</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="hero__countdown-divider" role="separator" />
-                  <div className="hero__countdown-footer">
-                    <span className="hero__countdown-date">{COUNTDOWN_DATE}</span>
-                    <span className="hero__countdown-time">{COUNTDOWN_TIME}</span>
-                    <span className="hero__countdown-tagline">Every Second Counts.</span>
-                  </div>
-                </>
-              )}
-            </motion.div>
+            <Suspense fallback={null}>
+              <HeroSplineScene reducedMotion={reducedMotion} />
+            </Suspense>
           </div>
         </div>
 
