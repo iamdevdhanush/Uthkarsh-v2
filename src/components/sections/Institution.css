@@ -15,9 +15,29 @@
 .institution__media { position: relative; }
 
 .institution__frame {
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid var(--color-border);
   background: var(--void);
   overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
+}
+
+.institution__frame::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg at 50% 50%, transparent, rgba(79, 125, 255,0.02), transparent, rgba(126, 182, 255,0.01), transparent);
+  pointer-events: none;
+  animation: glassRotate 15s linear infinite;
+}
+
+.institution__frame:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(79, 125, 255, 0.06);
 }
 
 .institution__frame-top {
@@ -25,8 +45,8 @@
   padding: var(--space-2) var(--space-3);
   font-family: var(--font-mono); font-size: var(--text-micro);
   color: var(--color-text-muted); letter-spacing: var(--tracking-mono);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  background: rgba(255,255,255,0.02);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
 }
 
 .institution__frame-signal { color: var(--color-accent); }
@@ -57,7 +77,7 @@
   padding: var(--space-2) var(--space-3);
   font-family: var(--font-mono); font-size: var(--text-micro);
   color: var(--color-text-muted);
-  border-top: 1px solid rgba(255,255,255,0.06);
+  border-top: 1px solid var(--color-border);
 }
 
 .institution__frame-coord { color: var(--color-text-secondary); }
@@ -117,13 +137,20 @@
 .institution__host-badge {
   display: inline-flex; align-items: center; gap: var(--space-2);
   padding: var(--space-2) var(--space-3);
-  border: 1px solid rgba(255,77,0,0.2);
-  background: rgba(255,77,0,0.04);
+  border: 1px solid rgba(79, 125, 255, 0.25);
+  background: rgba(79, 125, 255, 0.04);
+  transition: border-color 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+}
+
+.institution__host-badge:hover {
+  border-color: rgba(79, 125, 255, 0.5);
+  box-shadow: 0 0 15px rgba(79, 125, 255, 0.1);
 }
 
 .institution__host-dot {
   width: 4px; height: 4px; border-radius: 50%;
   background: var(--color-accent);
+  box-shadow: 0 0 6px var(--color-accent);
 }
 
 .institution__host-text {

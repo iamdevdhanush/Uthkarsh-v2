@@ -15,6 +15,24 @@
   pointer-events: none;
 }
 
+.final-cta::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(circle, rgba(79, 125, 255,0.06) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: ctaSpotlight 4s ease-in-out infinite alternate;
+}
+
+@keyframes ctaSpotlight {
+  0% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.9); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+}
+
 .final-cta__system-bar {
   display: flex; align-items: center; gap: var(--space-4);
   padding: var(--space-3) 0;
@@ -102,10 +120,42 @@
   font-size: var(--text-body-lg); font-weight: 600;
   letter-spacing: var(--tracking-tight);
   position: relative; overflow: hidden;
-  transition: background var(--duration-fast) var(--ease-out);
+  transition: background var(--duration-fast) var(--ease-out), transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+  transform-style: preserve-3d;
 }
 
-.final-cta__button:hover { background: var(--color-energy); }
+.final-cta__button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(79, 125, 255,0.3) 0%, transparent 50%, rgba(126, 182, 255,0.2) 100%);
+  opacity: 0;
+  transition: opacity 0.3s var(--ease-out);
+}
+
+.final-cta__button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  transform: skewX(-20deg);
+}
+
+.final-cta__button:hover {
+  background: var(--color-energy);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(79, 125, 255, 0.3);
+}
+
+.final-cta__button:hover::before { opacity: 1; }
+.final-cta__button:hover::after { animation: btnLightSweep 0.5s ease forwards; }
+
+.final-cta__button:active {
+  transform: translateY(0);
+}
 
 .final-cta__button-line {
   position: absolute; bottom: 0; left: 0; right: 0; height: 2px;

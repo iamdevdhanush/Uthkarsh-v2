@@ -49,7 +49,7 @@
 .reg-field__input:focus {
   outline: none;
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(255, 77, 0, 0.08);
+  box-shadow: 0 0 0 3px rgba(79, 125, 255, 0.12);
 }
 
 .reg-field__input--error {
@@ -132,10 +132,10 @@
 .reg-member__remove:hover { text-decoration: underline; }
 
 .reg-step__notice {
-  background: rgba(255,77,0,0.04);
+  background: rgba(79, 125, 255, 0.04);
   padding: var(--space-4);
   margin-bottom: var(--space-6);
-  border-left: 3px solid var(--color-accent);
+  border-left: 3px solid var(--electric-blue);
 }
 
 .reg-step__notice-text {

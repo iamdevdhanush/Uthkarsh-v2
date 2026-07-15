@@ -53,18 +53,60 @@
 
 .faculty__card {
   display: flex; flex-direction: column; gap: var(--space-3);
-  border: 1px solid rgba(255,255,255,0.06);
-  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
   padding: var(--space-4);
-  transition: border-color var(--duration-fast) var(--ease-out);
+  transition: border-color var(--duration-fast) var(--ease-out),
+              box-shadow var(--duration-fast) var(--ease-out),
+              transform 0.4s var(--ease-out);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  perspective: 800px;
+}
+
+.faculty__card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg at 50% 50%, transparent, rgba(79, 125, 255,0.02), transparent);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s var(--ease-out);
+}
+
+.faculty__card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.02), transparent);
+  pointer-events: none;
 }
 
 .faculty__card:hover {
-  border-color: rgba(255,77,0,0.3);
+  border-color: rgba(79, 125, 255, 0.3);
+  box-shadow: 0 0 15px var(--glow-blue);
+  transform: translateY(-4px);
 }
 
+.faculty__card:hover::before { opacity: 1; }
+.faculty__card:hover::after { animation: cardSweep 0.6s ease forwards; }
+
 .faculty__card--leader {
-  border-color: rgba(255,77,0,0.15);
+  border-color: rgba(126, 182, 255, 0.25);
+  box-shadow: 0 0 12px var(--glow-purple);
+}
+
+.faculty__card--leader:hover {
+  border-color: var(--violet-purple);
+  box-shadow: 0 0 22px var(--glow-purple), 0 8px 30px rgba(126, 182, 255, 0.08);
+  transform: translateY(-4px);
 }
 
 .faculty__index {

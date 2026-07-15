@@ -9,12 +9,47 @@
   border-radius: 0;
   transition: all var(--duration-fast) var(--ease-out);
   white-space: nowrap;
+  word-break: break-word;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
 
 .btn:disabled {
   opacity: 0.4;
   cursor: not-allowed;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(79, 125, 255,0.15) 0%, transparent 50%, rgba(126, 182, 255,0.1) 100%);
+  opacity: 0;
+  transition: opacity 0.3s var(--ease-out);
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+  transform: skewX(-20deg);
+}
+
+.btn:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(79, 125, 255, 0.15);
+}
+
+.btn:not(:disabled):hover::before { opacity: 1; }
+.btn:not(:disabled):hover::after { animation: btnLightSweep 0.5s ease forwards; }
+
+.btn:not(:disabled):active {
+  transform: translateY(0);
 }
 
 .btn--primary {

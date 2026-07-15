@@ -1,8 +1,25 @@
 .footer {
-  background: var(--deep);
+  background: var(--void);
   color: var(--color-text);
   padding: var(--space-12) 0 var(--space-6);
-  border-top: 1px solid rgba(255,255,255,0.04);
+  border-top: 1px solid var(--color-border);
+  position: relative;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(79, 125, 255,0.2), transparent);
+  animation: footerLine 3s ease-in-out infinite;
+}
+
+@keyframes footerLine {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
 }
 
 .footer__top {
@@ -81,7 +98,7 @@
 .footer__link:hover { color: var(--color-text); }
 
 .footer__divider {
-  height: 1px; background: rgba(255,255,255,0.06);
+  height: 1px; background: var(--color-border);
   margin-bottom: var(--space-4);
 }
 
