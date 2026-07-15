@@ -5,9 +5,9 @@ import './Faculty.css'
 const facultyConfig: Record<string, { objectPosition: string; role: string }> = {
   principal: { objectPosition: 'center 25%', role: 'Principal' },
   hod: { objectPosition: 'center 30%', role: 'Head of Department' },
-  asma: { objectPosition: 'center 30%', role: 'Faculty' },
-  sachidanand: { objectPosition: 'center 30%', role: 'Faculty' },
   banuprakash: { objectPosition: 'center 30%', role: 'Faculty' },
+  sachidanand: { objectPosition: 'center 30%', role: 'Faculty' },
+  asma: { objectPosition: 'center 30%', role: 'Faculty' },
 }
 
 function FacultyCard({ member, index }: { member: typeof facultyMembers[number]; index: number }) {
@@ -54,6 +54,8 @@ function FacultyCard({ member, index }: { member: typeof facultyMembers[number];
         <h3 className="faculty__name">{displayName}</h3>
         {isPlaceholder ? (
           <p className="faculty__role faculty__role--pending">Details to be announced</p>
+        ) : member.designation ? (
+          <p className="faculty__role">{member.designation}</p>
         ) : null}
       </div>
     </motion.div>
