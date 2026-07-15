@@ -1,11 +1,10 @@
-﻿import { useState, useEffect, useRef, useCallback, lazy, Suspense } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { motion } from 'motion/react'
 import { Link } from 'react-router-dom'
 import { eventConfig } from '../../data/eventConfig'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
+import { HeroSplineScene } from './HeroSplineScene'
 import './Hero.css'
-
-const HeroSplineScene = lazy(() => import('./HeroSplineScene').then(m => ({ default: m.HeroSplineScene })))
 
 const metaItems = [
   { label: 'HOST', value: eventConfig.institutionShort },
@@ -170,11 +169,9 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* Right panel — Spline 3D robot scene */}
+          {/* Right panel — Spline 3D robot scene (iframe-isolated) */}
           <div className="hero__side">
-            <Suspense fallback={null}>
-              <HeroSplineScene reducedMotion={reducedMotion} />
-            </Suspense>
+            <HeroSplineScene reducedMotion={reducedMotion} />
           </div>
         </div>
 

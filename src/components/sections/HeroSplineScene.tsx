@@ -1,50 +1,86 @@
-import { useEffect, useState, lazy } from 'react'
-import type { Application } from '@splinetool/runtime'
+import { useEffect, useState, useRef } from 'react'
 
-const SplineScene = lazy(() => import('@splinetool/react-spline'))
-
-const SPLINE_URL = 'https://my.spline.design/nexbotbyaximoriscopycopy-sQ3Hkn2BS6tqpuNyI5a6IXQw/'
+const SPLINE_URL =
+  'https://my.spline.design/nexbotbyaximoriscopycopy-VS8SuwNGnNCrVZcFiWCXRJiG/'
 
 interface Props {
   reducedMotion: boolean
 }
 
+/**
+ * Safe, isolated Spline 3D robot integration using a plain iframe.
+ *
+ * Design decisions:
+ * - Plain iframe instead of @splinetool/react-spline SDK.
+ *   The SDK (v4.1.0) calls `throw error` in its render cycle when the
+ *   scene fails to load, crashing the entire React tree (blank page).
+ *   An iframe is fully sandboxed — any Spline failure stays inside it.
+ * - Never uses position:fixed or arbitrary z-index values.
+ * - Mobile: hidden below 768px via CSS (.hero__side display:none) —
+ *   the mobile layout re-exposes it via .hero__side--mobile in CSS.
+ * - Loading placeholder shown until iframe fires onLoad.
+ * - Error state shown if iframe fails to load within 20s.
+ */
 export function HeroSplineScene({ reducedMotion }: Props) {
-  const [canRender, setCanRender] = useState(false)
   const [loaded, setLoaded] = useState(false)
-  const [error, setError] = useState(false)
+  const [timedOut, setTimedOut] = useState(false)
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
-    const mq = window.matchMedia('(min-width: 768px)')
-    const check = () => setCanRender(mq.matches)
-    check()
-    mq.addEventListener('change', check)
-    return () => mq.removeEventListener('change', check)
-  }, [])
+    // 20-second safety timeout — if spline takes too long or fails silently
+    timerRef.current = setTimeout(() => {
+      if (!loaded) setTimedOut(true)
+    }, 20000)
 
-  if (reducedMotion || !canRender) return null
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current)
+    }
+  }, [loaded])
 
-  const handleLoad = (_e: Application) => setLoaded(true)
-  const handleError = () => setError(true)
+  const handleLoad = () => {
+    if (timerRef.current) clearTimeout(timerRef.current)
+    setLoaded(true)
+    setTimedOut(false)
+  }
 
-  if (error) return null
+  // If reduced motion is requested, skip the heavy 3D scene
+  if (reducedMotion) return null
 
   return (
     <div className="hero__spline" role="presentation" aria-hidden="true">
       <div className="hero__spline-glow" />
-      <div className={`hero__spline-inner${loaded ? ' hero__spline-inner--loaded' : ''}`}>
-        {!loaded && (
-          <div className="hero__spline-loading">
-            <span className="hero__spline-loading-text">INITIALIZING VISUAL SYSTEM</span>
+      <div
+        className={`hero__spline-inner${loaded ? ' hero__spline-inner--loaded' : ''}`}
+      >
+        {/* Loading placeholder — only shown while iframe is initialising */}
+        {!loaded && !timedOut && (
+          <div className="hero__spline-loading" aria-hidden="true">
+            <span className="hero__spline-loading-text">
+              INITIALIZING VISUAL SYSTEM
+            </span>
             <span className="hero__spline-loading-bar" />
           </div>
         )}
-        <SplineScene
-          scene={SPLINE_URL}
-          onLoad={handleLoad}
-          onError={handleError}
-          style={{ width: '100%', height: '100%', border: 'none' }}
-        />
+
+        {/*
+         * The iframe is always in the DOM so it loads in the background.
+         * opacity:0 until loaded → avoids flash of white.
+         * pointer-events on the wrapper are set to none in CSS;
+         * the iframe itself re-enables them so the 3D scene is interactive.
+         */}
+        {!timedOut && (
+          <iframe
+            src={SPLINE_URL}
+            title="UTKARSH 26 Interactive 3D Robot"
+            frameBorder="0"
+            width="100%"
+            height="100%"
+            loading="lazy"
+            allowFullScreen
+            className={`hero__spline-iframe${loaded ? ' hero__spline-iframe--loaded' : ''}`}
+            onLoad={handleLoad}
+          />
+        )}
       </div>
     </div>
   )

@@ -369,7 +369,12 @@
 }
 
 @media (max-width: 767px) {
-  .hero__side { display: none; }
+  .hero__side {
+    display: flex;
+    min-height: clamp(300px, 55vh, 480px);
+    width: 100%;
+    order: 10; /* pushes visual below all hero content on mobile */
+  }
 }
 
 @media (min-width: 768px) {
@@ -398,7 +403,8 @@
 }
 
 .hero__spline-inner > div,
-.hero__spline-inner canvas {
+.hero__spline-inner canvas,
+.hero__spline-inner iframe {
   pointer-events: auto;
 }
 
@@ -446,6 +452,24 @@
 @keyframes splineBar {
   0% { left: -40%; }
   100% { left: 100%; }
+}
+
+/* Iframe Spline embed */
+.hero__spline-iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  opacity: 0;
+  transition: opacity 0.6s ease-out;
+  /* iframe must never create horizontal scroll */
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.hero__spline-iframe--loaded {
+  opacity: 1;
 }
 
 /* Compact metrics strip */
